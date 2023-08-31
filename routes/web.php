@@ -24,6 +24,9 @@ Route::get('/about', function () {
 Route::get('/shop', function () {
     return view('Pages.shop');
 })->name('shop');
+Route::get('/cart', function () {
+    return view('Pages.cart');
+})->name('cart');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

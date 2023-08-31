@@ -1,8 +1,7 @@
-@extends('layouts.parent')
 @extends('layouts.bradecrum')
 @section('title', 'Shop')
 @section('desc', 'Fresh and Organic')
-@section('contant')
+@section('contant2')
     <!-- products -->
     <div class="product-section mt-150 mb-150">
         <div class="container">

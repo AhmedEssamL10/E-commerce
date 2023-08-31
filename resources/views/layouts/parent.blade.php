@@ -68,12 +68,12 @@
                                 <li><a href="about">About</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="sub-menu">
-                                        <li><a href="404.html">404 page</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="news.html">News</a></li>
+                                        <li><a href="404">404 page</a></li>
+                                        <li><a href="about">About</a></li>
+                                        <li><a href="cart">Cart</a></li>
+                                        <li><a href="checkout">Check Out</a></li>
+                                        <li><a href="contact">Contact</a></li>
+                                        <li><a href="news">News</a></li>
                                         <li><a href="shop">Shop</a></li>
                                     </ul>
                                 </li>
@@ -84,7 +84,7 @@
                                         <li><a href="shop">Shop</a></li>
                                         <li><a href="checkout.html">Check Out</a></li>
                                         <li><a href="single-product.html">Single Product</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="cart">Cart</a></li>
                                     </ul>
                                 </li>
                                 @guest
@@ -133,8 +133,7 @@
                                 </li>
                                 <li>
                                     <div class="header-icons">
-                                        <a class="shopping-cart" href="cart.html"><i
-                                                class="fas fa-shopping-cart"></i></a>
+                                        <a class="shopping-cart" href="cart"><i class="fas fa-shopping-cart"></i></a>
                                         <a class="mobile-hide search-bar-icon" href="#"><i
                                                 class="fas fa-search"></i></a>
                                     </div>
@@ -170,7 +169,6 @@
         </div>
     </div>
     <!-- end search area -->
-
     @yield('contant')
     <!-- logo carousel -->
     <div class="logo-carousel-section">
@@ -225,7 +223,7 @@
                         <h2 class="widget-title">Pages</h2>
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="about">About</a></li>
                             <li><a href="services.html">Shop</a></li>
                             <li><a href="news.html">News</a></li>
                             <li><a href="contact.html">Contact</a></li>
