@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
         content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
-
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- title -->
     <title>Fruitkha - Slider Version</title>
 
@@ -89,45 +90,49 @@
                                         <li><a href="cart.html">Cart</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="news.html">Sign in </a>
-                                    <ul class="sub-menu">
-                                        @guest
-                                            @if (Route::has('login'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                                </li>
-                                            @endif
-
-                                            @if (Route::has('register'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link"
-                                                        href="{{ route('register') }}">{{ __('Register') }}</a>
-                                                </li>
-                                            @endif
-                                        @else
-                                            <li class="nav-item dropdown">
-                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
-                                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false" v-pre>
-                                                    {{ Auth::user()->name }}
+                                @guest
+                                    <li><a href="{{ route('login') }}">Sign in </a>
+                                    @endguest
+                                    @auth
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                            role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
                                                 </a>
 
-                                                <div class="dropdown-menu dropdown-menu-end"
-                                                    aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                                        onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                                        {{ __('Logout') }}
-                                                    </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    class="d-none">
+                                                    @csrf
+                                                </form>
 
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                        class="d-none">
-                                                        @csrf
-                                                    </form>
-                                                </div>
                                             </li>
-                                        @endguest
-                                    </ul>
+                                        </ul>
+                                    </li>
+                                @endauth
+                                <ul class="sub-menu">
+                                    @guest
+                                        @if (Route::has('login'))
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            </li>
+                                        @endif
+
+                                        @if (Route::has('register'))
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                            </li>
+                                        @endif
+                                    @else
+                                    @endguest
+                                </ul>
                                 </li>
                                 <li>
                                     <div class="header-icons">
