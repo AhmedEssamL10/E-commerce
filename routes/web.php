@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
-})->name('index');
+    return view('welcome');
+})->name('home');
 
 Route::get('/about', function () {
     return view('Pages.about');
@@ -29,4 +30,7 @@ Route::get('/cart', function () {
 })->name('cart');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//admin
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard.index');

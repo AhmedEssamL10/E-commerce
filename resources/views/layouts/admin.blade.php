@@ -233,7 +233,7 @@
                     </div>
                     <div class="info">
                         @auth
-                            {{-- <a href="#" class="d-block">{{ Auth::user()->name }}</a> --}}
+                            <a href="#" class="d-block">{{ Auth::guard('admin')->user()->name }}</a>
                         @endauth
                         @guest
                             <a href="#" class="d-block">Guest</a>

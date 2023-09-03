@@ -62,7 +62,7 @@
                         <!-- menu start -->
                         <nav class="main-menu">
                             <ul>
-                                <li class="current-list-item"><a href="{{ route('index') }}">Home</a>
+                                <li class="current-list-item"><a href="{{ route('home') }}">Home</a>
 
                                 </li>
                                 <li><a href="about">About</a></li>
