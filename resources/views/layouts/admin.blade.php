@@ -232,7 +232,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        @auth
+                        @auth('admin')
                             <a href="#" class="d-block">{{ Auth::guard('admin')->user()->name }}</a>
                         @endauth
                         @guest

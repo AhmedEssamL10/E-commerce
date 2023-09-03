@@ -29,8 +29,3 @@ Route::get('/cart', function () {
     return view('Pages.cart');
 })->name('cart');
 Auth::routes();
-
-
-
-//admin
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard.index');
