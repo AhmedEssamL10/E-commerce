@@ -19,7 +19,6 @@ class Authenticate extends Middleware
 
                 return route('dashboard.admin.login');
             } elseif ($request->user('web')) {
-
                 return route('login');
             }
         }
