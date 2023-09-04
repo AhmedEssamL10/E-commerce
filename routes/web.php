@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Tables\BrandController;
+use App\Http\Controllers\Tables\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +25,7 @@ Route::get(
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
-Route::get('/shop', function () {
-    return view('Pages.shop');
-})->name('shop');
+Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/cart', function () {
     return view('Pages.cart');
 })->name('cart');
