@@ -21,8 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware('auth:admin');
 //login
-Route::get('admin/login', [AdminLoginController::class, 'login'])->name('dashboard.admin.login');
-Route::post('admin/login', [AdminLoginController::class, 'checkLogin'])->name('dashboard.admin.checkLogin');
+Route::prefix('admin/')->name('dashboard.admin.')->group(function () {
+    Route::get('login', [AdminLoginController::class, 'login'])->name('login');
+    Route::post('login', [AdminLoginController::class, 'checkLogin'])->name('checkLogin');
+    Route::get('register', [AdminRegisterController::class, 'register'])->name('register');
+    Route::post('register', [AdminRegisterController::class, 'store'])->name('store');
+});
+Route::post('admin/logout', [AdminLoginController::class, 'logoutAdmin'])->name('dashboard.admin.logout');
+
 //register
-Route::get('admin/register', [AdminRegisterController::class, 'register'])->name('dashboard.admin.register');
-Route::post('admin/register', [AdminRegisterController::class, 'store'])->name('dashboard.admin.store');

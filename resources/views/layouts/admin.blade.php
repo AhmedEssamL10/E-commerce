@@ -199,13 +199,14 @@
                     {{-- @endguest --}}
 
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="{{ route('dashboard.admin.logout') }}"
                             onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('dashboard.admin.logout') }}" method="POST"
+                            class="d-none">
                             @csrf
                         </form>
                     </div>
