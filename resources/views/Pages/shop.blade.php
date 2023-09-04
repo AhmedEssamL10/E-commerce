@@ -27,7 +27,7 @@
                                 <a href="single-product.html"><img src="{{ asset('images/product//' . $product->image) }}"
                                         height="200" alt=""></a>
                             </div>
-                            <h3>Strawberry</h3>
+                            <h3>{{ $product->en_name }}</h3>
                             <p class="product-price"><span>Per Kg</span> 85$ </p>
                             <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                         </div>

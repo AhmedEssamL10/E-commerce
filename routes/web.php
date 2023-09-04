@@ -21,11 +21,16 @@ Route::get(
     '/',
     [BrandController::class, 'index']
 )->name('home');
+Route::get('/shop/{brand_id}', [ProductController::class, 'filterByBrands'])->name('productByBrands');
+Route::get('/shop', [ProductController::class, 'index'])->name('shop');
+
+
 
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
-Route::get('/shop', [ProductController::class, 'index'])->name('shop');
+
+
 Route::get('/cart', function () {
     return view('Pages.cart');
 })->name('cart');

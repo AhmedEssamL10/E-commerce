@@ -125,8 +125,9 @@
                     <div class="col-lg-4 col-md-6 text-center">
                         <div class="single-product-item">
                             <div class="product-image">
-                                <a href="single-product.html"><img src="{{ asset('images/brand-logo//' . $brand->image) }} "
-                                        height="200" alt=""></a>
+                                <a href="{{ route('productByBrands', $brand->id) }}"><img
+                                        src="{{ asset('images/brand-logo//' . $brand->image) }} " height="200"
+                                        alt=""></a>
                             </div>
                             <h3>{{ $brand->en_name }}</h3>
 
