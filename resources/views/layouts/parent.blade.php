@@ -37,6 +37,11 @@
 </head>
 
 <body>
+    <?php
+    $categories = DB::table('catigories')
+        ->select('*')
+        ->get();
+    ?>
     <!--PreLoader-->
     <div class="loader">
         <div class="loader-inner">
@@ -68,13 +73,16 @@
                                 <li><a href="about">About</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="sub-menu">
-                                        <li><a href="404">404 page</a></li>
-                                        <li><a href="about">About</a></li>
+                                        @foreach ($categories as $category)
+                                            <li><a href="404">{{ $category->en_name }}</a></li>
+                                        @endforeach
+
+                                        {{-- <li><a href="about">About</a></li>
                                         <li><a href="cart">Cart</a></li>
                                         <li><a href="checkout">Check Out</a></li>
                                         <li><a href="contact">Contact</a></li>
                                         <li><a href="news">News</a></li>
-                                        <li><a href="shop">Shop</a></li>
+                                        <li><a href="shop">Shop</a></li> --}}
                                     </ul>
                                 </li>
 
