@@ -36,5 +36,5 @@ Route::get('/about', function () {
 
 Route::get('/cart', function () {
     return view('Pages.cart');
-})->name('cart');
+})->name('cart')->middleware('auth');
 Auth::routes();
