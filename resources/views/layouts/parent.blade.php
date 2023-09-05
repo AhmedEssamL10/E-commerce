@@ -41,6 +41,9 @@
     $categories = DB::table('catigories')
         ->select('en_name', 'id')
         ->get();
+    $subcategories = DB::table('subcatigories')
+        ->select('en_name', 'id')
+        ->get();
     ?>
     <!--PreLoader-->
     <div class="loader">
@@ -79,12 +82,16 @@
                                             </li>
                                         @endforeach
 
-                                        {{-- <li><a href="about">About</a></li>
-                                        <li><a href="cart">Cart</a></li>
-                                        <li><a href="checkout">Check Out</a></li>
-                                        <li><a href="contact">Contact</a></li>
-                                        <li><a href="news">News</a></li>
-                                        <li><a href="shop">Shop</a></li> --}}
+                                    </ul>
+                                </li>
+                                <li><a href="#">Subcategories</a>
+                                    <ul class="sub-menu">
+                                        @foreach ($subcategories as $subcategory)
+                                            <li><a
+                                                    href="{{ route('productBySubcategories', $subcategory->id) }}">{{ $subcategory->en_name }}</a>
+                                            </li>
+                                        @endforeach
+
                                     </ul>
                                 </li>
 

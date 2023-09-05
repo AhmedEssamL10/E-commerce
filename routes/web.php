@@ -26,6 +26,7 @@ Route::get(
 )->name('home');
 Route::get('/shop/brand/{brand_id}', [ProductController::class, 'filterByBrands'])->name('productByBrands');
 Route::get('/shop/category/{Category_id}', [ProductController::class, 'filterByCategories'])->name('productByCategories');
+Route::get('/shop/subcategory/{subCategory_id}', [ProductController::class, 'filterBySubategories'])->name('productBySubcategories');
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 
 

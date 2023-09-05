@@ -24,4 +24,9 @@ class ProductController extends Controller
         $products = Product::where('category_id', '=', $category_id)->get();
         return view('Pages.shop', compact('products'));
     }
+    public function filterBySubategories($subcategory_id)
+    {
+        $products = Product::where('subcategory_id', '=', $subcategory_id)->get();
+        return view('Pages.shop', compact('products'));
+    }
 }
