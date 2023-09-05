@@ -143,7 +143,7 @@
 
 
 
-    <div class="product-section mt-150 mb-150">
+    {{-- <div class="product-section mt-150 mb-150">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 text-center">
@@ -173,7 +173,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- end product section -->
 
     <!-- cart banner section -->

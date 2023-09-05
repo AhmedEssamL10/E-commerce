@@ -28,7 +28,7 @@
                                         height="200" alt=""></a>
                             </div>
                             <h3>{{ $product->en_name }}</h3>
-                            <p class="product-price"><span>Per Kg</span> 85$ </p>
+                            <p class="product-price"><span>Price</span> {{ $product->price }}$ </p>
                             <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                         </div>
                     </div>

@@ -39,7 +39,7 @@
 <body>
     <?php
     $categories = DB::table('catigories')
-        ->select('*')
+        ->select('en_name', 'id')
         ->get();
     ?>
     <!--PreLoader-->
@@ -71,10 +71,12 @@
 
                                 </li>
                                 <li><a href="about">About</a></li>
-                                <li><a href="#">Pages</a>
+                                <li><a href="#">Categories</a>
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
-                                            <li><a href="404">{{ $category->en_name }}</a></li>
+                                            <li><a
+                                                    href="{{ route('productByCategories', $category->id) }}">{{ $category->en_name }}</a>
+                                            </li>
                                         @endforeach
 
                                         {{-- <li><a href="about">About</a></li>

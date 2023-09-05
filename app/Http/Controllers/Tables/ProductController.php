@@ -19,4 +19,9 @@ class ProductController extends Controller
         $products = Product::where('brand_id', '=', $brand_id)->get();
         return view('Pages.shop', compact('products'));
     }
+    public function filterByCategories($category_id)
+    {
+        $products = Product::where('category_id', '=', $category_id)->get();
+        return view('Pages.shop', compact('products'));
+    }
 }

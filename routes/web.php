@@ -24,7 +24,8 @@ Route::get(
     '/',
     [HomeController::class, 'index']
 )->name('home');
-Route::get('/shop/{brand_id}', [ProductController::class, 'filterByBrands'])->name('productByBrands');
+Route::get('/shop/brand/{brand_id}', [ProductController::class, 'filterByBrands'])->name('productByBrands');
+Route::get('/shop/category/{Category_id}', [ProductController::class, 'filterByCategories'])->name('productByCategories');
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 
 
