@@ -24,8 +24,9 @@
                     <div class="col-lg-4 col-md-6 text-center strawberry">
                         <div class="single-product-item">
                             <div class="product-image">
-                                <a href="single-product.html"><img src="{{ asset('images/product//' . $product->image) }}"
-                                        height="200" alt=""></a>
+                                <a href="{{ route('product_details', $product->id) }}"><img
+                                        src="{{ asset('images/product//' . $product->image) }}" height="200"
+                                        alt=""></a>
                             </div>
                             <h3>{{ $product->en_name }}</h3>
                             <p class="product-price"><span>Price</span> {{ $product->price }}$ </p>

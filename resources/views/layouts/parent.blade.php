@@ -74,7 +74,7 @@
 
                                 </li>
                                 <li><a href="about">About</a></li>
-                                <li><a href="#">Categories</a>
+                                <li><a href="" style="pointer-events: none">Categories</a>
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
                                             <li><a
@@ -84,7 +84,7 @@
 
                                     </ul>
                                 </li>
-                                <li><a href="#">Subcategories</a>
+                                <li><a href="" style="pointer-events: none">Subcategories</a>
                                     <ul class="sub-menu">
                                         @foreach ($subcategories as $subcategory)
                                             <li><a
