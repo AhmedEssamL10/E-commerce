@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Catigory;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,8 +16,8 @@ class HomeController extends Controller
     public function index()
     {
         $brands = Brand::all();
-        $categories = Catigory::all();
-        return view('welcome', compact('categories', 'brands'));
+        $newProduct = Product::select('image', 'en_name', 'en_details')->orderBy('created_at')->first();
+        return view('welcome', compact('newProduct', 'brands'));
     }
     public function indexcategory()
     {
