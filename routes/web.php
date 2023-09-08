@@ -1,11 +1,8 @@
 <?php
 
-
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\Tables\ProductController;
 use App\Http\Controllers\Tables\CartController;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,13 +27,13 @@ Route::get('/shop/subcategory/{subCategory_id}', [ProductController::class, 'fil
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/shop/product-details/{product_id}', [ProductController::class, 'product_details'])->name('product_details');
 Route::get('/shop/cart/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
-
+Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth');
 
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
 
-Route::get('/cart', function () {
-    return view('Pages.cart');
-})->name('cart');
+// Route::get('/cart', function () {
+//     return view('Pages.cart');
+// })->name('cart');
 Auth::routes();

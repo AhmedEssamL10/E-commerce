@@ -22,4 +22,14 @@ class CartController extends Controller
         ]);
         return view('Pages.cart', compact('product'));
     }
+    public function index()
+    {
+        # code...
+        $cartInfo = Cart::select('*')->where('user_id', '=', Auth::user()->id)->get();
+        foreach ($cartInfo as  $value) {
+            $products = Product::where('id', '=', $value->product_id)->get();
+        }
+
+        return view('Pages.cart', compact('cartInfo', 'products'));
+    }
 }
