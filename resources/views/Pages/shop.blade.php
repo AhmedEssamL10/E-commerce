@@ -30,7 +30,8 @@
                             </div>
                             <h3>{{ $product->en_name }}</h3>
                             <p class="product-price"><span>Price</span> {{ $product->price }}$ </p>
-                            <a href="{{ route('cart') }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to
+                            <a href="{{ route('AddToCart', $product->id) }}" class="cart-btn"><i
+                                    class="fas fa-shopping-cart"></i> Add to
                                 Cart</a>
                         </div>
                     </div>

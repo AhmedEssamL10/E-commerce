@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Tables\BrandController;
-use App\Http\Controllers\Tables\CategoryController;
+
 use App\Http\Controllers\Tables\ProductController;
-use App\Models\Catigory;
+use App\Http\Controllers\Tables\CartController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +29,7 @@ Route::get('/shop/category/{Category_id}', [ProductController::class, 'filterByC
 Route::get('/shop/subcategory/{subCategory_id}', [ProductController::class, 'filterBySubategories'])->name('productBySubcategories');
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/shop/product-details/{product_id}', [ProductController::class, 'product_details'])->name('product_details');
+Route::get('/shop/cart/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
 
 
 Route::get('/about', function () {
@@ -37,5 +38,5 @@ Route::get('/about', function () {
 
 Route::get('/cart', function () {
     return view('Pages.cart');
-})->name('cart')->middleware('auth');
+})->name('cart');
 Auth::routes();
