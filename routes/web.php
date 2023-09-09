@@ -26,7 +26,7 @@ Route::get('/shop/category/{Category_id}', [ProductController::class, 'filterByC
 Route::get('/shop/subcategory/{subCategory_id}', [ProductController::class, 'filterBySubategories'])->name('productBySubcategories');
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/shop/product-details/{product_id}', [ProductController::class, 'product_details'])->name('product_details');
-Route::get('/shop/cart/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
+Route::get('/shop/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
 Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth');
 
 Route::get('/about', function () {

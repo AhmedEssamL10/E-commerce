@@ -22,20 +22,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($products as $product)
-                                        <tr class="table-body-row">
-                                            <td class="product-remove"><a href="#"><i
-                                                        class="far fa-window-close"></i></a>
-                                            </td>
-                                            <td class="product-image"><img
-                                                    src="{{ asset('images/product//' . $product->image) }}" alt="">
-                                            </td>
-                                            <td class="product-name">{{ $product->en_name }}</td>
-                                            <td class="product-price">${{ $product->price }}</td>
-                                            <td class="product-quantity"><input type="quantity"
-                                                    placeholder="{{ $product->quantity }}"></td>
-                                            <td class="product-total">{{ $product->price * $product->quantity }}</td>
-                                        </tr>
+                                    @foreach ($products as $product1)
+                                        @foreach ($product1 as $product)
+                                            <tr class="table-body-row">
+                                                <td class="product-remove"><a href="#"><i
+                                                            class="far fa-window-close"></i></a>
+                                                </td>
+                                                <td class="product-image"><img
+                                                        src="{{ asset('images/product//' . $product->image) }}"
+                                                        alt="">
+                                                </td>
+                                                <td class="product-name">{{ $product->en_name }}</td>
+                                                <td class="product-price">${{ $product->price }}</td>
+                                                <td class="product-quantity"><input type="quantity"
+                                                        placeholder="{{ $product->quantity }}"></td>
+                                                <td class="product-total">{{ $product->price * $product->quantity }}</td>
+                                            </tr>
+                                        @endforeach
                                     @endforeach
 
 

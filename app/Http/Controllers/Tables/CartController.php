@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -20,16 +21,19 @@ class CartController extends Controller
             'product_id' => $product->id,
             // 'quantity' => $request->quantity
         ]);
-        return view('Pages.cart', compact('product'));
+        return redirect(route('shop'));
     }
     public function index()
     {
         # code...
-        $cartInfo = Cart::select('*')->where('user_id', '=', Auth::user()->id)->get();
-        foreach ($cartInfo as  $value) {
-            $products = Product::where('id', '=', $value->product_id)->get();
-        }
 
+        $cartInfo = Cart::select('*')->where('user_id', '=', Auth::user()->id)->get();
+        $products = [];
+        foreach ($cartInfo as  $value) {
+            $product = Product::where('id', '=', $value->product_id)->get();
+            $products[] = $product;
+        }
+        // dd($products);
         return view('Pages.cart', compact('cartInfo', 'products'));
     }
 }
