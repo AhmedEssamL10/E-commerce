@@ -22,10 +22,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($products as $product1)
-                                        @foreach ($product1 as $product)
+                                    @foreach ($products as $productArray)
+                                        @foreach ($productArray as $product)
                                             <tr class="table-body-row">
-                                                <td class="product-remove"><a href="#"><i
+                                                <td class="product-remove"><a
+                                                        href="{{ route('deleteCartProduct', $product->id) }}"><i
                                                             class="far fa-window-close"></i></a>
                                                 </td>
                                                 <td class="product-image"><img

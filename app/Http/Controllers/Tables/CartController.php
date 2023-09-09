@@ -36,4 +36,9 @@ class CartController extends Controller
         // dd($products);
         return view('Pages.cart', compact('cartInfo', 'products'));
     }
+    public function delete($product_id)
+    {
+        Cart::where('product_id', '=', $product_id)->delete();
+        return redirect(route('cart'));
+    }
 }
