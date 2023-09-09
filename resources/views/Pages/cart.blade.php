@@ -80,6 +80,7 @@
                         </table>
                         <div class="cart-buttons">
                             <a href="checkout.html" class="boxed-btn black">Check Out</a>
+                            <a href="{{ route('deleteAllCartProducts') }}" class="boxed-btn black">Delete all</a>
                         </div>
                     </div>
 

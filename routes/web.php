@@ -29,6 +29,7 @@ Route::get('/shop/product-details/{product_id}', [ProductController::class, 'pro
 Route::get('/shop/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
 Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth');
 Route::get('cart/delete/{product_id}',  [CartController::class, 'delete'])->name('deleteCartProduct');
+Route::get('cart/deleteAll',  [CartController::class, 'deleteAll'])->name('deleteAllCartProducts');
 Route::post('cart/edit/{product_id}',  [CartController::class, 'edit'])->name('editCartProduct');
 
 Route::get('/about', function () {

@@ -46,6 +46,11 @@ class CartController extends Controller
         Cart::where('product_id', '=', $product_id)->delete();
         return redirect(route('cart'));
     }
+    public function deleteAll()
+    {
+        Cart::truncate();
+        return redirect(route('cart'));
+    }
     public function edit($product_id, Request $request)
     {
         Cart::where('product_id', '=', $product_id)->update([
