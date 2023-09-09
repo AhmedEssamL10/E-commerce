@@ -19,7 +19,7 @@
                         <p>{{ $product->en_details }}</p>
                         <div class="single-product-form">
                             <form action="index.html">
-                                <input type="number" placeholder="0">
+                                <input type="number" name="quantity" placeholder="0">
                             </form>
                             <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                         </div>

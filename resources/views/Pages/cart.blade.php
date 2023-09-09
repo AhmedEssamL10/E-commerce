@@ -22,31 +22,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $productArray)
-                                    @foreach ($productArray as $product)
-                                        <tr class="table-body-row">
-                                            <td class="product-remove">
+                                @foreach ($products as $product)
+                                    <tr class="table-body-row">
+                                        <td class="product-remove">
 
-                                                <a href="{{ route('deleteCartProduct', $product->id) }} "
-                                                    class="btn btn-danger">Delete</a>
+                                            <a href="{{ route('deleteCartProduct', $product->id) }} "
+                                                class="btn btn-danger">Delete</a>
 
 
+                                        </td>
+                                        <td class="product-image"><img
+                                                src="{{ asset('images/product//' . $product->image) }}" alt="">
+                                        </td>
+                                        <td class="product-name">{{ $product->en_name }}</td>
+                                        <td class="product-price">${{ $product->price }}</td>
+                                        <form method="POST" action="{{ route('editCartProduct', $product->id) }}">
+                                            @csrf
+
+                                            <td class="product-quantity"><input type="number" name="quantity"
+                                                    placeholder="{{ $product->quantity }}">
+                                                <button class="btn btn-warning">Edit</button>
                                             </td>
-                                            <td class="product-image"><img
-                                                    src="{{ asset('images/product//' . $product->image) }}" alt="">
-                                            </td>
-                                            <td class="product-name">{{ $product->en_name }}</td>
-                                            <td class="product-price">${{ $product->price }}</td>
-                                            <form method="POST" action="{{ route('editCartProduct', $product->id) }}">
-                                                @csrf
-                                                <td class="product-quantity"><input type="number" name="quantity"
-                                                        placeholder="{{ $product->quantity }}">
-                                                    <button class="btn btn-warning">Edit</button>
-                                                </td>
-                                            </form>
-                                            <td class="product-total">{{ $product->price * $product->quantity }}</td>
-                                        </tr>
-                                    @endforeach
+                                        </form>
+                                        <td class="product-total">{{ $product->price * $product->quantity }}</td>
+                                    </tr>
                                 @endforeach
 
 
