@@ -28,7 +28,8 @@ Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/shop/product-details/{product_id}', [ProductController::class, 'product_details'])->name('product_details');
 Route::get('/shop/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
 Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth');
-Route::get('cart/{product_id}',  [CartController::class, 'delete'])->name('deleteCartProduct');
+Route::get('cart/delete/{product_id}',  [CartController::class, 'delete'])->name('deleteCartProduct');
+Route::post('cart/edit/{product_id}',  [CartController::class, 'edit'])->name('editCartProduct');
 
 Route::get('/about', function () {
     return view('Pages.about');

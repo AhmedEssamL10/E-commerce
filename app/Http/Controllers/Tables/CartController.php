@@ -6,7 +6,6 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -39,6 +38,13 @@ class CartController extends Controller
     public function delete($product_id)
     {
         Cart::where('product_id', '=', $product_id)->delete();
+        return redirect(route('cart'));
+    }
+    public function edit($product_id, Request $request)
+    {
+        Product::where('id', '=', $product_id)->update([
+            'quantity' => $request->quantity
+        ]);
         return redirect(route('cart'));
     }
 }
