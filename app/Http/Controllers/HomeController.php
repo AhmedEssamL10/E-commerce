@@ -19,7 +19,5 @@ class HomeController extends Controller
         $newProduct = Product::select('image', 'en_name', 'en_details')->orderBy('created_at')->first();
         return view('welcome', compact('newProduct', 'brands'));
     }
-    public function indexcategory()
-    {
-    }
+   
 }
