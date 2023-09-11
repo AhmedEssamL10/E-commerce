@@ -115,6 +115,9 @@
                                             {{ Auth::user()->name }}
                                         </a>
                                         <ul class="sub-menu">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+                                            </li>
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -128,6 +131,8 @@
                                                 </form>
 
                                             </li>
+
+
                                         </ul>
                                     </li>
                                 @endauth

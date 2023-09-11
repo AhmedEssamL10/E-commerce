@@ -35,6 +35,9 @@ Route::post('cart/edit/{product_id}',  [CartController::class, 'edit'])->name('e
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
+Route::get('/profile', function () {
+    return view('Pages.profile');
+})->name('profile');
 
 // Route::get('/cart', function () {
 //     return view('Pages.cart');
