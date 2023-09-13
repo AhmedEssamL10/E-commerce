@@ -13,7 +13,8 @@ class Address extends Model
         'region',
         'street',
         'building',
-        'floor'
+        'floor',
+        'user_id'
     ];
     // Address belong to one user
     public function user()

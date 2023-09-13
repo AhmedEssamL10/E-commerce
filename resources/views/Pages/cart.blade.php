@@ -2,9 +2,7 @@
 @section('title', 'Cart')
 @section('desc', 'Fresh and Organic')
 @section('contant2')
-
     <!-- cart -->
-
     <div class="cart-section mt-150 mb-150">
         <div class="container">
             <div class="row">
@@ -22,6 +20,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $sum = 0;
+                                @endphp
                                 @foreach ($products as $product)
                                     <tr class="table-body-row">
                                         <td class="product-remove">
@@ -45,6 +46,9 @@
                                             </td>
                                         </form>
                                         <td class="product-total">{{ $product->price * $product->quantity }}</td>
+                                        @php
+                                            $sum = $sum + $product->price * $product->quantity;
+                                        @endphp
                                     </tr>
                                 @endforeach
 
@@ -66,7 +70,7 @@
                             <tbody>
                                 <tr class="total-data">
                                     <td><strong>Subtotal: </strong></td>
-                                    <td>$500</td>
+                                    <td>${{ $sum }}</td>
                                 </tr>
                                 <tr class="total-data">
                                     <td><strong>Shipping: </strong></td>
@@ -74,7 +78,7 @@
                                 </tr>
                                 <tr class="total-data">
                                     <td><strong>Total: </strong></td>
-                                    <td>$545</td>
+                                    <td>${{ $sum + 45 }}</td>
                                 </tr>
                             </tbody>
                         </table>

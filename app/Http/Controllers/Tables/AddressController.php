@@ -31,4 +31,26 @@ class AddressController extends Controller
         ]);
         return back();
     }
+    public function create(Request $request)
+    {
+        # code...
+        //validation
+        $request->validate([
+            'city' => 'required|string',
+            'region' => 'required|string',
+            'street' => 'required|string',
+            'building' => 'required|string',
+            'floor' => 'required|string',
+        ]);
+        //update
+        Address::create([
+            'city' => $request->city,
+            'region' => $request->region,
+            'street' => $request->street,
+            'building' => $request->building,
+            'floor' => $request->floor,
+            'user_id' => Auth::user()->id
+        ]);
+        return back();
+    }
 }

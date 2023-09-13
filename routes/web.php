@@ -40,6 +40,7 @@ Route::get('/profile', function () {
     return view('Pages.profile');
 })->name('profile');
 Route::post('/profile/edit', [AddressController::class, 'edit'])->name('addressEdit');
+Route::post('/profile/create', [AddressController::class, 'create'])->name('addressCreate');
 
 
 Route::get('/about', function () {

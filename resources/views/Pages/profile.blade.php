@@ -79,25 +79,77 @@
                                 data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div class="billing-address-form">
-                                        <form method="POST" action="{{ route('addressEdit') }}">
-                                            @csrf
-                                            <p><input type="text" placeholder="Address" name="city"
-                                                    value="{{ Auth::user()->addresses->first()->city }}">
-                                            </p>
-                                            <p><input type="text" placeholder="Address" name="region"
-                                                    value="{{ Auth::user()->addresses->first()->region }}">
-                                            </p>
-                                            <p><input type="text" placeholder="Address" name="street"
-                                                    value="{{ Auth::user()->addresses->first()->street }}">
-                                            </p>
-                                            <p><input type="text" placeholder="Address" name="building"
-                                                    value="{{ Auth::user()->addresses->first()->building }}">
-                                            </p>
-                                            <p><input type="text" placeholder="Address" name="floor"
-                                                    value="{{ Auth::user()->addresses->first()->floor }}">
-                                            </p>
-                                            <button class="btn btn-primary">Change</button>
-                                        </form>
+                                        @if (Auth::user()->addresses->first() == null)
+                                            <form method="POST" action="{{ route('addressCreate') }}">
+                                                @csrf
+                                                <p><input type="text" placeholder="City" name="city"
+                                                        value="{{ old('city') }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="text" placeholder="Region" name="region"
+                                                        value="{{ old('region') }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="text" placeholder="Street" name="street"
+                                                        value="{{ old('street') }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="text" placeholder="Building" name="building"
+                                                        value="{{ old('building') }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="text" placeholder="Floor" name="floor"
+                                                        value="{{ old('floor') }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <button class="btn btn-primary">Add</button>
+                                            </form>
+                                        @else
+                                            <form method="POST" action="{{ route('addressEdit') }}">
+                                                @csrf
+                                                <p><input type="text" placeholder="Address" name="city"
+                                                        value="{{ Auth::user()->addresses->first()->city }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="text" placeholder="Address" name="region"
+                                                        value="{{ Auth::user()->addresses->first()->region }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="text" placeholder="Address" name="street"
+                                                        value="{{ Auth::user()->addresses->first()->street }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="text" placeholder="Address" name="building"
+                                                        value="{{ Auth::user()->addresses->first()->building }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="text" placeholder="Address" name="floor"
+                                                        value="{{ Auth::user()->addresses->first()->floor }}">
+                                                </p>
+                                                @error('detiles_ar')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <button class="btn btn-primary">Update</button>
+                                            </form>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
