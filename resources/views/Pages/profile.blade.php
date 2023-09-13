@@ -28,7 +28,6 @@
                                                         value="{{ Auth::user()->name }}"></p>
                                                 <p><input type="email" placeholder="Email"
                                                         value="{{ Auth::user()->email }}"></p>
-                                                <p><input type="text" placeholder="Address"></p>
                                                 <p><input type="tel" placeholder="Phone"
                                                         value="{{ Auth::user()->phone }}"></p>
                                                 <div class="order-details-wrap">
@@ -81,12 +80,27 @@
                                 <div class="card-body">
                                     <div class="billing-address-form">
                                         <form action="index.html">
+                                            @if (Auth::user()->addresses->first->city == null)
+                                                <p><input type="text" placeholder="Add Address" name="address">
+                                                    <button class="btn btn-primary">Add</button>
+                                        </form>
+                                    @else
+                                        <form action="index.html">
+                                            <?php $i = 1; ?>
+                                            @foreach (Auth::user()->addresses as $address)
+                                                <p>Address {{ $i }}</p>
+                                                <p><input type="text" placeholder="Address" name="address"
+                                                        value="{{ $address->city }}">
+                                                </p>
 
-
-                                            <p><input type="text" placeholder="Address"></p>
-
-
+                                                <?php $i++; ?>
+                                            @endforeach
                                             <button class="btn btn-primary">Change</button>
+                                            @endif
+
+
+
+
 
                                         </form>
                                     </div>
