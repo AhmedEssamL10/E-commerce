@@ -79,29 +79,24 @@
                                 data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div class="billing-address-form">
-                                        <form action="index.html">
-                                            @if (Auth::user()->addresses->first->city == null)
-                                                <p><input type="text" placeholder="Add Address" name="address">
-                                                    <button class="btn btn-primary">Add</button>
-                                        </form>
-                                    @else
-                                        <form action="index.html">
-                                            <?php $i = 1; ?>
-                                            @foreach (Auth::user()->addresses as $address)
-                                                <p>Address {{ $i }}</p>
-                                                <p><input type="text" placeholder="Address" name="address"
-                                                        value="{{ $address->city }}">
-                                                </p>
-
-                                                <?php $i++; ?>
-                                            @endforeach
+                                        <form method="POST" action="{{ route('addressEdit') }}">
+                                            @csrf
+                                            <p><input type="text" placeholder="Address" name="city"
+                                                    value="{{ Auth::user()->addresses->first()->city }}">
+                                            </p>
+                                            <p><input type="text" placeholder="Address" name="region"
+                                                    value="{{ Auth::user()->addresses->first()->region }}">
+                                            </p>
+                                            <p><input type="text" placeholder="Address" name="street"
+                                                    value="{{ Auth::user()->addresses->first()->street }}">
+                                            </p>
+                                            <p><input type="text" placeholder="Address" name="building"
+                                                    value="{{ Auth::user()->addresses->first()->building }}">
+                                            </p>
+                                            <p><input type="text" placeholder="Address" name="floor"
+                                                    value="{{ Auth::user()->addresses->first()->floor }}">
+                                            </p>
                                             <button class="btn btn-primary">Change</button>
-                                            @endif
-
-
-
-
-
                                         </form>
                                     </div>
                                 </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Tables\AddressController;
 use App\Http\Controllers\Tables\ProductController;
 use App\Http\Controllers\Tables\CartController;
 use Illuminate\Support\Facades\Auth;
@@ -21,25 +22,27 @@ Route::get(
     '/',
     [HomeController::class, 'index']
 )->name('home');
-Route::get('/shop/brand/{brand_id}', [ProductController::class, 'filterByBrands'])->name('productByBrands');
-Route::get('/shop/category/{Category_id}', [ProductController::class, 'filterByCategories'])->name('productByCategories');
-Route::get('/shop/subcategory/{subCategory_id}', [ProductController::class, 'filterBySubategories'])->name('productBySubcategories');
-Route::get('/shop', [ProductController::class, 'index'])->name('shop');
-Route::get('/shop/product-details/{product_id}', [ProductController::class, 'product_details'])->name('product_details');
-Route::get('/shop/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
-Route::get('/cart', [CartController::class, 'index'])->name('cart')->middleware('auth');
-Route::get('cart/delete/{product_id}',  [CartController::class, 'delete'])->name('deleteCartProduct');
-Route::get('cart/deleteAll',  [CartController::class, 'deleteAll'])->name('deleteAllCartProducts');
-Route::post('cart/edit/{product_id}',  [CartController::class, 'edit'])->name('editCartProduct');
+Route::prefix('/shop')->group(function () {
+    Route::get('/brand/{brand_id}', [ProductController::class, 'filterByBrands'])->name('productByBrands');
+    Route::get('/category/{Category_id}', [ProductController::class, 'filterByCategories'])->name('productByCategories');
+    Route::get('/subcategory/{subCategory_id}', [ProductController::class, 'filterBySubategories'])->name('productBySubcategories');
+    Route::get('', [ProductController::class, 'index'])->name('shop');
+    Route::get('/product-details/{product_id}', [ProductController::class, 'product_details'])->name('product_details');
+    Route::get('/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
+});
+Route::prefix('/cart')->middleware('auth')->controller(CartController::class)->group(function () {
+    Route::get('', 'index')->name('cart');
+    Route::get('delete/{product_id}', 'delete')->name('deleteCartProduct');
+    Route::get('deleteAll', 'deleteAll')->name('deleteAllCartProducts');
+    Route::post('edit/{product_id}',  'edit')->name('editCartProduct');
+});
+Route::get('/profile', function () {
+    return view('Pages.profile');
+})->name('profile');
+Route::post('/profile/edit', [AddressController::class, 'edit'])->name('addressEdit');
+
 
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
-Route::get('/profile', function () {
-    return view('Pages.profile');
-})->name('profile');
-
-// Route::get('/cart', function () {
-//     return view('Pages.cart');
-// })->name('cart');
 Auth::routes();

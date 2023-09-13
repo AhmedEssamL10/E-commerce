@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('street', 255);
             $table->tinyInteger('building');
             $table->string('floor');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
