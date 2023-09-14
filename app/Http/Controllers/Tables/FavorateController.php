@@ -16,4 +16,12 @@ class FavorateController extends Controller
             ->where('favorates.user_id', '=', Auth::user()->id)->get();
         return view('Pages.favorate', compact('favorateProducts'));
     }
+    public function create($id)
+    {
+        Favorate::create([
+            'user_id' => Auth::user()->id,
+            'product_id' => $id
+        ]);
+        return back();
+    }
 }

@@ -34,7 +34,8 @@
                                 <a href="{{ route('AddToCart', $product->id) }}" class="cart-btn"><i
                                         class="fas fa-shopping-cart"></i>Cart
                                 </a>
-                                <a href="" class="cart-btn"><i class="fas fa-heart-cart"></i>Favorate </a>
+                                <a href="{{ route('favorate.create', $product->id) }}" class="cart-btn"><i
+                                        class="fas fa-heart-cart"></i>Favorate </a>
                             </span>
                         </div>
                     </div>

@@ -48,8 +48,6 @@ Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
 
-Route::get(
-    '/favorate',
-    [FavorateController::class, 'index']
-)->name('favorate');
+Route::get('/favorate', [FavorateController::class, 'index'])->name('favorate');
+Route::get('/favorate/create/{id}', [FavorateController::class, 'create'])->name('favorate.create');
 Auth::routes();
