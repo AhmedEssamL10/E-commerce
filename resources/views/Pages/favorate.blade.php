@@ -25,7 +25,8 @@
 
                                         <td class="product-remove">
 
-                                            <a href=" " class="btn btn-danger">Delete</a>
+                                            <a href="{{ route('favorate.delete', $product->id) }}"
+                                                class="btn btn-danger">Delete</a>
                                         </td>
                                         <td class="product-image"> <a href="{{ route('product_details', $product->id) }}">
                                                 <img src="{{ asset('images/product//' . $product->image) }}"

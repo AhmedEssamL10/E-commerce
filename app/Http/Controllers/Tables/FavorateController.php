@@ -24,4 +24,9 @@ class FavorateController extends Controller
         ]);
         return back();
     }
+    public function delete($id)
+    {
+        Favorate::where('product_id', '=', $id)->delete();
+        return back();
+    }
 }
