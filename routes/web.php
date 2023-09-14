@@ -47,9 +47,10 @@ Route::post('/profile/create', [AddressController::class, 'create'])->name('addr
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
-
-Route::get('/favorate', [FavorateController::class, 'index'])->name('favorate');
-Route::get('/favorate/create/{id}', [FavorateController::class, 'create'])->name('favorate.create');
-Route::get('/favorate/delete/{id}', [FavorateController::class, 'delete'])->name('favorate.delete');
-Route::get('/favorate/deleteAll', [FavorateController::class, 'deleteAll'])->name('favorate.deleteAll');
+Route::prefix('/favorate')->middleware('auth')->name('favorate')->controller(FavorateController::class)->group(function () {
+    Route::get('', 'index');
+    Route::get('/create/{id}',  'create')->name('.create');
+    Route::get('/delete/{id}', 'delete')->name('.delete');
+    Route::get('/deleteAll',  'deleteAll')->name('.deleteAll');
+});
 Auth::routes();
