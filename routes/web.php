@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Tables\FavorateController;
 use App\Http\Controllers\Tables\AddressController;
 use App\Http\Controllers\Tables\ProductController;
 use App\Http\Controllers\Tables\CartController;
@@ -46,4 +47,9 @@ Route::post('/profile/create', [AddressController::class, 'create'])->name('addr
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
+
+Route::get(
+    '/favorate',
+    [FavorateController::class, 'index']
+)->name('favorate');
 Auth::routes();

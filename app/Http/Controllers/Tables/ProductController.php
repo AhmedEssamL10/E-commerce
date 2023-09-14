@@ -31,7 +31,6 @@ class ProductController extends Controller
     }
     public function product_details($product_id)
     {
-
         $product = Product::where('id', '=', $product_id)->first();
         $products = Product::where('subcategory_id', '=', $product->subcategory_id)->get();
         return view('Pages.single-product', compact('product', 'products'));

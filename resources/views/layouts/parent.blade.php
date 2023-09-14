@@ -94,7 +94,9 @@
 
                                     </ul>
                                 </li>
-
+                                @auth
+                                    </li>
+                                @endauth
                                 <li><a href="">Contact</a></li>
                                 <li><a href="{{ route('shop') }}">Shop</a>
                                     <ul class="sub-menu">
@@ -117,6 +119,9 @@
                                         <ul class="sub-menu">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('favorate') }}">Favorate</a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"

@@ -30,9 +30,12 @@
                             </div>
                             <h3>{{ $product->en_name }}</h3>
                             <p class="product-price"><span>Price</span> {{ $product->price }}$ </p>
-                            <a href="{{ route('AddToCart', $product->id) }}" class="cart-btn"><i
-                                    class="fas fa-shopping-cart"></i> Add to
-                                Cart</a>
+                            <span>
+                                <a href="{{ route('AddToCart', $product->id) }}" class="cart-btn"><i
+                                        class="fas fa-shopping-cart"></i>Cart
+                                </a>
+                                <a href="" class="cart-btn"><i class="fas fa-heart-cart"></i>Favorate </a>
+                            </span>
                         </div>
                     </div>
                 @endforeach
