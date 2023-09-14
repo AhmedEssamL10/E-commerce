@@ -29,4 +29,9 @@ class FavorateController extends Controller
         Favorate::where('product_id', '=', $id)->delete();
         return back();
     }
+    public function deleteAll()
+    {
+        Favorate::where('user_id', '=', Auth::user()->id)->delete();
+        return back();
+    }
 }

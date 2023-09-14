@@ -40,12 +40,18 @@
 
                             </tbody>
                         </table>
+
                     </div>
                 </div>
 
 
             </div>
+            <div class="cart-buttons" style="padding-left: 75%">
+                <a href="{{ route('shop') }}" class="boxed-btn black">Shop</a>
+                <a href="{{ route('favorate.deleteAll') }}" class="boxed-btn black">Delete all</a>
+            </div>
         </div>
+
     </div>
     </form>
     <!-- end cart -->

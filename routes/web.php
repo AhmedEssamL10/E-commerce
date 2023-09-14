@@ -51,4 +51,5 @@ Route::get('/about', function () {
 Route::get('/favorate', [FavorateController::class, 'index'])->name('favorate');
 Route::get('/favorate/create/{id}', [FavorateController::class, 'create'])->name('favorate.create');
 Route::get('/favorate/delete/{id}', [FavorateController::class, 'delete'])->name('favorate.delete');
+Route::get('/favorate/deleteAll', [FavorateController::class, 'deleteAll'])->name('favorate.deleteAll');
 Auth::routes();
