@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apis\Auth\RegisterController;
 use App\Http\Controllers\Apis\HomeController;
 use App\Http\Controllers\Apis\ProductController;
 use Illuminate\Http\Request;
@@ -21,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('products', [ProductController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
+
+//Auth
+Route::post('users/register', RegisterController::class);
