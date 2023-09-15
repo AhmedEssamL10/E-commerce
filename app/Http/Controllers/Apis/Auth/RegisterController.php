@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Apis\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,8 +16,10 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    use ApiResponses;
     public function __invoke(Request $request)
     {
+
         //validation
         $request->validate([
             'name' => 'required|string|max:32',
@@ -28,5 +31,6 @@ class RegisterController extends Controller
         $data = $request->except('password', 'password_confirmation');
         $data['password'] = Hash::make($request->password);
         $user = User::created($data);
+        // return date($user, 'done');
     }
 }

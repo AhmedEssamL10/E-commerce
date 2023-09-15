@@ -101,8 +101,8 @@
                                 <li><a href="{{ route('shop') }}">Shop</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{ route('shop') }}">Shop</a></li>
-                                        <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="single-product.html">Single Product</a></li>
+                                        <li><a href="{{ route('checkout') }}">Check Out</a></li>
+
                                         <li><a href="cart">Cart</a></li>
                                     </ul>
                                 </li>
