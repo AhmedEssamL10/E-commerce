@@ -47,9 +47,7 @@ Route::post('/profile/create', [AddressController::class, 'create'])->name('addr
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
-Route::get('/checkout', function () {
-    return view('Pages.checkout');
-})->name('checkout')->middleware('auth');
+Route::get('/checkout', [CartController::class, 'checkoutIndex'])->name('checkout')->middleware('auth');
 Route::prefix('/favorate')->middleware('auth')->name('favorate')->controller(FavorateController::class)->group(function () {
     Route::get('', 'index');
     Route::get('/create/{id}',  'create')->name('.create');

@@ -25,20 +25,10 @@ class CartController extends Controller
     }
     public function index()
     {
-        # code...
-
         $cartInfo = Cart::select('*')->where('user_id', '=', Auth::user()->id)->get();
-
-        // $products = [];
-        // foreach ($cartInfo as  $value) {
-        //     $product = Product::where('id', '=', $value->product_id)->get();
-        //     $products[] = $product;
         $products = DB::table('users')->join('carts',  'carts.user_id', '=', "users.id")
             ->join('products', 'carts.product_id', '=', 'products.id')
             ->select('products.*', 'carts.quantity')->where('carts.user_id', '=', Auth::user()->id)->get();
-
-
-        // dd($products);
         return view('Pages.cart', compact('products'));
     }
     public function delete($product_id)
@@ -57,5 +47,13 @@ class CartController extends Controller
             'quantity' => $request->quantity
         ]);
         return redirect(route('cart'));
+    }
+    public function checkoutIndex()
+    {
+        $cartInfo = Cart::select('*')->where('user_id', '=', Auth::user()->id)->get();
+        $products = DB::table('users')->join('carts',  'carts.user_id', '=', "users.id")
+            ->join('products', 'carts.product_id', '=', 'products.id')
+            ->select('products.*', 'carts.quantity')->where('carts.user_id', '=', Auth::user()->id)->get();
+        return view('Pages.checkout', compact('products'));
     }
 }

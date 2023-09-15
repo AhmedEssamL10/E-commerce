@@ -86,6 +86,71 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card single-accordion">
+                                <div class="card-header" id="headingFour">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                            data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            Order Review
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="card-details">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="cart-table-wrap">
+                                                        <table class="cart-table">
+                                                            <thead class="cart-table-head">
+                                                                <tr class="table-head-row">
+
+                                                                    <th class="product-image">Product Image</th>
+                                                                    <th class="product-name">Name</th>
+                                                                    <th class="product-price">Price</th>
+                                                                    <th class="product-price">Quantity</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @php
+                                                                    $sum = 0;
+                                                                @endphp
+                                                                @foreach ($products as $product)
+                                                                    <tr class="table-body-row">
+
+                                                                        <td class="product-image"> <a
+                                                                                href="{{ route('product_details', $product->id) }}">
+                                                                                <img src="{{ asset('images/product//' . $product->image) }}"
+                                                                                    alt=""></a>
+                                                                        </td>
+                                                                        <td class="product-name">{{ $product->en_name }}
+                                                                        </td>
+                                                                        <td class="product-price">${{ $product->price }}
+                                                                        </td>
+                                                                        <td class="product-price">
+                                                                            {{ $product->quantity }}
+                                                                        </td>
+                                                                        @php
+                                                                            $sum = $sum + $product->price * $product->quantity;
+                                                                        @endphp
+                                                                    </tr>
+                                                                @endforeach
+
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -96,40 +161,40 @@
                         <table class="order-details">
                             <thead>
                                 <tr>
-                                    <th>Your order Details</th>
-                                    <th>Price</th>
+                                    <th>Product</th>
+                                    <th>quantity</th>
+                                    <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody class="order-details-body">
                                 <tr>
                                     <td>Product</td>
+                                    <td>quantity</td>
                                     <td>Total</td>
                                 </tr>
-                                <tr>
-                                    <td>Strawberry</td>
-                                    <td>$85.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Berry</td>
-                                    <td>$70.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Lemon</td>
-                                    <td>$35.00</td>
-                                </tr>
+                                @foreach ($products as $product)
+                                    <tr>
+                                        <td>{{ $product->en_name }}</td>
+                                        <td>{{ $product->quantity }}</td>
+                                        <td>${{ $product->price }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <tbody class="checkout-details">
+
+                                <thead>
+                                    <tr>
+                                        <th>Shipping</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
                                 <tr>
-                                    <td>Subtotal</td>
-                                    <td>$190</td>
-                                </tr>
-                                <tr>
-                                    <td>Shipping</td>
+
                                     <td>$50</td>
+                                    <td>{{ $sum + 50 }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Total</td>
-                                    <td>$240</td>
+
                                 </tr>
                             </tbody>
                         </table>
