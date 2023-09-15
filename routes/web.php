@@ -5,6 +5,7 @@ use App\Http\Controllers\Tables\FavorateController;
 use App\Http\Controllers\Tables\AddressController;
 use App\Http\Controllers\Tables\ProductController;
 use App\Http\Controllers\Tables\CartController;
+use App\Http\Controllers\Tables\OrderHistoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +49,7 @@ Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
 Route::get('/checkout', [CartController::class, 'checkoutIndex'])->name('checkout')->middleware('auth');
+Route::get('/checkout/create', [OrderHistoryController::class, 'create'])->name('orderHistpryCreate')->middleware('auth');
 Route::prefix('/favorate')->middleware('auth')->name('favorate')->controller(FavorateController::class)->group(function () {
     Route::get('', 'index');
     Route::get('/create/{id}',  'create')->name('.create');
