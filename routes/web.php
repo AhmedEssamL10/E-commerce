@@ -49,7 +49,7 @@ Route::get('/about', function () {
 })->name('about');
 Route::get('/checkout', function () {
     return view('Pages.checkout');
-})->name('checkout');
+})->name('checkout')->middleware('auth');
 Route::prefix('/favorate')->middleware('auth')->name('favorate')->controller(FavorateController::class)->group(function () {
     Route::get('', 'index');
     Route::get('/create/{id}',  'create')->name('.create');
