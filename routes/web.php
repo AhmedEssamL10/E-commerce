@@ -32,7 +32,7 @@ Route::prefix('/shop')->group(function () {
     Route::get('/product-details/{product_id}', [ProductController::class, 'product_details'])->name('product_details');
     Route::get('/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
 });
-Route::prefix('/cart')->middleware('auth')->controller(CartController::class)->group(function () {
+Route::prefix('/cart')->middleware('verified')->controller(CartController::class)->group(function () {
     Route::get('', 'index')->name('cart');
     Route::get('delete/{product_id}', 'delete')->name('deleteCartProduct');
     Route::get('deleteAll', 'deleteAll')->name('deleteAllCartProducts');
@@ -56,4 +56,8 @@ Route::prefix('/favorate')->middleware('auth')->name('favorate')->controller(Fav
     Route::get('/delete/{id}', 'delete')->name('.delete');
     Route::get('/deleteAll',  'deleteAll')->name('.deleteAll');
 });
+Auth::routes(['verify' => true]);
+
 Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
