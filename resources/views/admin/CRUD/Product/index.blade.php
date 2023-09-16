@@ -1,6 +1,7 @@
 @extends('admin.layouts.admin')
 @section('title', 'Dashboard')
 @section('contant')
+    @include('admin.layouts.messages')
     <section class="content">
         <div class="container-fluid">
             <div class="row">
