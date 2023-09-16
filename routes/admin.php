@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware('auth:admin');
+Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware('admin_auth');
 //login
 Route::prefix('admin/')->name('dashboard.admin.')->middleware('guest:admin')->group(function () {
     Route::get('login', [AdminLoginController::class, 'login'])->name('login');

@@ -61,5 +61,3 @@ Route::prefix('/favorate')->middleware('auth')->name('favorate')->controller(Fav
 Auth::routes(['verify' => true]);
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
