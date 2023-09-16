@@ -3,6 +3,7 @@
 
 @section('contant2')
     <!-- check out section -->
+    @include('layouts.messages')
     <div class="checkout-section mt-150 mb-150">
         <div class="container">
             <div class="row">
@@ -51,12 +52,19 @@
                                     data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="billing-address-form">
-                                            <form action="index.html">
-
-                                                <p><input type="password" placeholder="Old Password"></p>
-                                                <p><input type="password" placeholder="New Password"></p>
-                                                <p><input type="password" placeholder="Confirm new Password"></p>
-
+                                            <form method="POST" action="{{ route('changePassword') }}">
+                                                @csrf
+                                                <p><input type="password" name="old_password" placeholder="Old Password">
+                                                </p>
+                                                <p><input type="password" name="password" placeholder="New Password"></p>
+                                                @error('password')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+                                                <p><input type="password" name="password_confirmation"
+                                                        placeholder="Confirm new Password"></p>
+                                                @error('password_confirmation')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <div class="order-details-wrap">
                                                     <button class="btn btn-primary">Change</button>
 

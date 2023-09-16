@@ -6,6 +6,7 @@ use App\Http\Controllers\Tables\AddressController;
 use App\Http\Controllers\Tables\ProductController;
 use App\Http\Controllers\Tables\CartController;
 use App\Http\Controllers\Tables\OrderHistoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,7 @@ Route::get('/profile', function () {
 })->name('profile');
 Route::post('/profile/edit', [AddressController::class, 'edit'])->name('addressEdit');
 Route::post('/profile/create', [AddressController::class, 'create'])->name('addressCreate');
+Route::post('/profile/changePassword', [UserController::class, 'changePassword'])->name('changePassword');
 
 
 Route::get('/about', function () {
