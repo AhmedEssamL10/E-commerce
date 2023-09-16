@@ -236,7 +236,7 @@
                         @auth('admin')
                             <a href="#" class="d-block">{{ Auth::guard('admin')->user()->name }}</a>
                         @endauth
-                        @guest
+                        @guest('admin')
                             <a href="#" class="d-block">Guest</a>
                         @endguest
 
@@ -271,7 +271,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                {{-- <li class="nav-item">
+                                <li class="nav-item">
                                     <a href="{{ route('products.index') }}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>All Products</p>
@@ -293,7 +293,7 @@
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+                        {{-- <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('brands.index') }}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
@@ -307,7 +307,7 @@
                                 </a>
                             </li>
 
-                        </ul>
+                        </ul> --}}
                     </li>
                     <li class="nav-item menu">
                         <a href="#" class="nav-link ">
@@ -317,7 +317,7 @@
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+                        {{-- <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('catigories.index') }}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
@@ -331,9 +331,9 @@
                                 </a>
                             </li>
 
-                        </ul>
-                    </li> --}}
-                                {{--   <li class="nav-item">
+                        </ul> --}}
+                    </li>
+                    {{--   <li class="nav-item">
                             <a href="pages/widgets.html" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -935,7 +935,7 @@
                                 <p>Informational</p>
                             </a>
                         </li> --}}
-                            </ul>
+                    </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

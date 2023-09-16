@@ -1,6 +1,5 @@
-@extends('layouts.admin')
+@extends('admin.layouts.admin')
 @section('title', 'Dashboard')
-@section('name', 'Ahmed Essam')
 @section('contant')
     <div class="col-lg-3 col-6">
         <!-- small box -->

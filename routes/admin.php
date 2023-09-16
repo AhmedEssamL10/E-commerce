@@ -3,8 +3,7 @@
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminRegisterController;
-
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\Tables\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard')->middleware('admin_auth');
+Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('admin_auth');
 //login
 Route::prefix('admin/')->name('dashboard.admin.')->middleware('guest:admin')->group(function () {
     Route::get('login', [AdminLoginController::class, 'login'])->name('login');
@@ -29,4 +28,12 @@ Route::prefix('admin/')->name('dashboard.admin.')->middleware('guest:admin')->gr
 });
 Route::post('admin/logout', [AdminLoginController::class, 'logoutAdmin'])->name('dashboard.admin.logout');
 
-//register
+//products
+Route::prefix('admin/dashboard/products')->middleware('admin_auth')->name('products.')->controller(ProductController::class)->group(function () { // routing group to make unrepeated code
+    Route::get('/all', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::put('/update/{id}', 'update')->name('update');
+    Route::get('/delete/{id}', 'delete')->name('delete');
+});
