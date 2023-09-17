@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminRegisterController;
+use App\Http\Controllers\Admin\Tables\BrandController;
+use App\Http\Controllers\Admin\Tables\CategoryController;
 use App\Http\Controllers\Admin\Tables\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -49,7 +51,7 @@ Route::prefix('brands')->middleware('verified')->name('brands.')->controller(Bra
     Route::get('/delete/{id}', 'delete')->name('delete');
 });
 // catigories
-Route::prefix('catigories')->middleware('verified')->name('catigories.')->controller(CatigoryController::class)->group(function () {
+Route::prefix('catigories')->middleware('verified')->name('catigories.')->controller(CategoryController::class)->group(function () {
     Route::get('/all', 'index')->name('index');
     //create
     Route::get('/create', 'create')->name('create');
