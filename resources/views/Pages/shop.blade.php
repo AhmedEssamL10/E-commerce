@@ -6,7 +6,7 @@
     <div class="product-section mt-150 mb-150">
         <div class="container">
 
-      
+
 
             <div class="row product-lists">
                 @foreach ($products as $product)
@@ -14,7 +14,7 @@
                         <div class="single-product-item">
                             <div class="product-image">
                                 <a href="{{ route('product_details', $product->id) }}"><img
-                                        src="{{ asset('images/product//' . $product->image) }}" height="200"
+                                        src="{{ asset('images/product//' . $product->image) }}" height="210"
                                         alt=""></a>
                             </div>
                             <h3>{{ $product->en_name }}</h3>
