@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin\Tables;
 
 use App\Models\Brand;
 use App\Models\Product;
-use App\Models\Catigory;
 use App\Models\Subcatigory;
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 
@@ -15,16 +13,17 @@ class ProductController extends Controller
 {
     public function index()
     {
-        // $products = Product::all();
         $products = Product::all();
         return view('admin.CRUD.Product.index', compact('products'));
     }
+
     public function create()
     {
         $brands = Brand::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
         $subcatigories = Subcatigory::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
         return view('admin.CRUD.Product.create', compact('brands', 'subcatigories'));
     }
+
     public function store(StoreProductRequest $request)
     {
         //upload image
@@ -54,6 +53,7 @@ class ProductController extends Controller
         //redirect
         return  redirect(route('products.index'))->with('success', 'the product create successfully');
     }
+
     public function edit($id)
     {
         $brands = Brand::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
@@ -61,6 +61,7 @@ class ProductController extends Controller
         $products = Product::where('id', '=', $id)->get();
         return view('admin.CRUD.Product.edit', compact('products', 'brands', 'subcatigories'));
     }
+
     public function update(Request $request, $id)
     {
         //validation
@@ -111,8 +112,6 @@ class ProductController extends Controller
         //redirect
         return  redirect(route('products.index'))->with('success', 'the product Updated successfully');
     }
-
-
 
     public function delete($id)
     {
