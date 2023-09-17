@@ -54,4 +54,17 @@ class ProductController extends Controller
         //redirect
         return  redirect(route('products.index'))->with('success', 'the product create successfully');
     }
+    public function delete($id)
+    {
+
+        $path = public_path('images\product');
+        $dbimage = Product::select('image')->where('id', '=', $id)->first();
+        $oldpath1 = $path . '\\' . $dbimage->image;
+        if (file_exists($oldpath1)) {
+            unlink($oldpath1);
+        }
+
+        Product::where('id', '=', $id)->delete();
+        return  back()->with('success', 'the product deleted successfully');
+    }
 }
