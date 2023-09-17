@@ -25,12 +25,14 @@ class RegisterController extends Controller
             'name' => 'required|string|max:32',
             'email' => 'required|string|email',
             'password' => 'required|string|min:8|confirmed',
-            'phone' => 'required|string|min:11|max:11'
+            'phone' => 'required|string|min:11|max:11',
+            'device_name' => 'required'
         ]);
         //hash password and create
         $data = $request->except('password', 'password_confirmation');
         $data['password'] = Hash::make($request->password);
-        $user = User::created($data);
-        // return date($user, 'done');
+        $user = User::create($data);
+        $user->token = 'Bearer' . $user->createToken($request->device_name)->plainTextToken;
+        return $this->data(compact('user'), 'done');
     }
 }
