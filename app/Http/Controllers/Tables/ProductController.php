@@ -21,6 +21,7 @@ class ProductController extends Controller
     }
     public function filterByCategories($category_id)
     {
+        // DB::table('catigories')->join('subcatigories','')
         $products = Product::where('category_id', '=', $category_id)->get();
         return view('Pages.shop', compact('products'));
     }

@@ -32,7 +32,7 @@ class RegisterController extends Controller
         $data = $request->except('password', 'password_confirmation');
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
-        $user->token = 'Bearer' . $user->createToken($request->device_name)->plainTextToken;
+        $user->token = 'Bearer ' . $user->createToken($request->device_name)->plainTextToken;
         return $this->data(compact('user'), 'done');
     }
 }

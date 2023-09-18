@@ -20,5 +20,6 @@ class Product extends Model
         'ar_details',
         'brand_id',
         'subcategory_id',
+        'category_id',
     ];
 }

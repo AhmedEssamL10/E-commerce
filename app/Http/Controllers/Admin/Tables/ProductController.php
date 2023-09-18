@@ -8,6 +8,7 @@ use App\Models\Subcatigory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Models\Catigory;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,8 @@ class ProductController extends Controller
     {
         $brands = Brand::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
         $subcatigories = Subcatigory::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
-        return view('admin.CRUD.Product.create', compact('brands', 'subcatigories'));
+        $catigories = Catigory::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
+        return view('admin.CRUD.Product.create', compact('brands', 'subcatigories', 'catigories'));
     }
 
     public function store(StoreProductRequest $request)
@@ -47,6 +49,7 @@ class ProductController extends Controller
             'code' => $request->code,
             'brand_id' => $request->brands_id,
             'subcategory_id' => $request->subcatigories_id,
+            'category_id' => $request->catigories_id,
             'image' => $imageName,
 
         ]);

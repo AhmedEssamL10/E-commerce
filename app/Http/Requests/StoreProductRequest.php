@@ -35,6 +35,7 @@ class StoreProductRequest extends FormRequest
             'code' => 'required|integer|unique:products,code',
             'brand_id' => 'integer|exists:brands,id',
             'subcategoy_id' => 'integer|exists:subcatigories,id',
+            'categoy_id' => 'integer|exists:catigories,id',
             'image' => 'required|image'
         ];
     }
