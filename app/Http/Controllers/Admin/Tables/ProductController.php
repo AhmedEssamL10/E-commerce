@@ -61,8 +61,9 @@ class ProductController extends Controller
     {
         $brands = Brand::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
         $subcatigories = Subcatigory::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
+        $catigories = Catigory::select('id', 'en_name', 'ar_name')->orderBy('en_name')->get();
         $products = Product::where('id', '=', $id)->get();
-        return view('admin.CRUD.Product.edit', compact('products', 'brands', 'subcatigories'));
+        return view('admin.CRUD.Product.edit', compact('products', 'brands', 'subcatigories', 'catigories'));
     }
 
     public function update(Request $request, $id)
@@ -79,6 +80,7 @@ class ProductController extends Controller
             'code' => "required|integer|unique:products,code,$id,id",
             'brand_id' => 'integer|exists:brands,id',
             'subcategory_id' => 'integer|exists:subcatigories,id',
+            'category_id' => 'integer|exists:catigories,id',
             'image' => 'image'
         ]);
 
@@ -110,6 +112,7 @@ class ProductController extends Controller
             'code' => $request->code,
             'brand_id' => $request->brand_id,
             'subcategory_id' => $request->subcategory_id,
+            'category_id' => $request->catigories_id,
             'image' => $imageName,
         ]);
         //redirect

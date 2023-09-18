@@ -123,6 +123,24 @@
                 @error('subcategory_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="catigories_id">Catigories</label>
+                        <select name="catigories_id" id="catigories_id" class="form-control">
+                            @foreach ($catigories as $catigory)
+                                <option @selected($product->category_id == $catigory->id) value="{{ $catigory->id }}">
+                                    {{ $catigory->en_name }}
+                                    -{{ $catigory->ar_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @error('category_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <img src="{{ asset('images/product/' . $product->image) }}" style="width: 20%" alt="">
