@@ -51,7 +51,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('home') }}" class="nav-link">Home</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -317,7 +317,7 @@
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        {{-- <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('catigories.index') }}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
@@ -331,7 +331,7 @@
                                 </a>
                             </li>
 
-                        </ul> --}}
+                        </ul>
                     </li>
                     {{--   <li class="nav-item">
                             <a href="pages/widgets.html" class="nav-link">
@@ -953,7 +953,7 @@
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
 
                                 <li class="breadcrumb-item active">@yield('title')</li>
                             </ol>

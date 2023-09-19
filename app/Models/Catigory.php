@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Catigory extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'en_name',
+        'ar_name',
+        'status'
+    ];
 }
