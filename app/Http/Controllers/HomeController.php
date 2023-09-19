@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         $brands = Brand::where('en_name', '!=', 'none')->get();
-        $newProduct = Product::select('image', 'en_name', 'en_details')->orderBy('created_at')->first();
+        $newProduct = Product::select('id', 'image', 'en_name', 'en_details')->orderBy('created_at')->first();
         return view('welcome', compact('newProduct', 'brands'));
     }
 }
