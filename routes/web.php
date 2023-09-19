@@ -5,6 +5,7 @@ use App\Http\Controllers\Tables\FavorateController;
 use App\Http\Controllers\Tables\AddressController;
 use App\Http\Controllers\Tables\ProductController;
 use App\Http\Controllers\Tables\CartController;
+use App\Http\Controllers\Tables\ComplaintController;
 use App\Http\Controllers\Tables\OrderHistoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -52,9 +53,7 @@ Route::post('/profile/changePassword', [UserController::class, 'changePassword']
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
-Route::get('/contact', function () {
-    return view('Pages.contact');
-})->middleware('auth')->name('contact');
+Route::get('/contact', [ComplaintController::class, 'index'])->middleware('auth')->name('contact');
 //checkout
 Route::get('/checkout', [CartController::class, 'checkoutIndex'])->name('checkout')->middleware('auth');
 Route::get('/checkout/create', [OrderHistoryController::class, 'create'])->name('orderHistpryCreate')->middleware('auth');
