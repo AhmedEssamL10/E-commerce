@@ -23,6 +23,6 @@ class OrderHistoryController extends Controller
             ]);
         }
         Cart::where('user_id', '=', Auth::user()->id)->delete();
-        return back();
+        return redirect(route('home'))->with('success', 'your order has been requested');
     }
 }

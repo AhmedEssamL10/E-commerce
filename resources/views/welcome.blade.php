@@ -1,7 +1,6 @@
 @extends('layouts.parent')
-
-
 @section('contant')
+    @include('layouts.messages')
     <div class="hero-area hero-bg">
         <div class="container">
             <div class="row">
@@ -21,7 +20,7 @@
         </div>
     </div>
     <!-- end hero area -->
-
+    @include('layouts.messages')
     <!-- features list section -->
     <div class="list-section pt-80 pb-80">
         <div class="container">
