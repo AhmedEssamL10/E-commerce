@@ -1,10 +1,7 @@
 @extends('layouts.bradecrum')
 @section('title', 'Contact Us')
 @section('contant2')
-
-
-
-
+    @include('layouts.messages')
     <!-- contact form -->
     <div class="contact-from-section mt-150 mb-150">
         <div class="container">
@@ -18,21 +15,36 @@
                     </div>
                     <div id="form_status"></div>
                     <div class="contact-form">
-                        <form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+                        <form type="POST" id="fruitkha-contact" action="{{ route('contact.create') }}">
                             <p>
                                 <input type="text" placeholder="Name" name="name" id="name"
                                     value="{{ Auth::user()->name }}">
-                                <input type="email" placeholder="Email" name="email" id="email"
-                                    value="{{ Auth::user()->email }}">
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <input type="email" placeholder="Email" name="email" id="email"
+                                value="{{ Auth::user()->email }}">
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </p>
                             <p>
                                 <input type="tel" placeholder="Phone" name="phone" id="phone"
                                     value="{{ Auth::user()->phone }}">
-                                <input type="text" placeholder="Subject" name="subject" id="subject">
+                                @error('phone')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <input type="text" placeholder="Subject" name="subject" id="subject">
+                            @error('subject')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </p>
                             <p>
                                 <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
                             </p>
+                            @error('message')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <input type="hidden" name="token" value="FsWga4&@f6aw" />
                             <p><input type="submit" value="Submit"></p>
                         </form>

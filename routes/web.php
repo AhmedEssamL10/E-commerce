@@ -53,7 +53,9 @@ Route::post('/profile/changePassword', [UserController::class, 'changePassword']
 Route::get('/about', function () {
     return view('Pages.about');
 })->name('about');
+//contact
 Route::get('/contact', [ComplaintController::class, 'index'])->middleware('auth')->name('contact');
+Route::get('/contact/create', [ComplaintController::class, 'create'])->middleware('auth')->name('contact.create');
 //checkout
 Route::get('/checkout', [CartController::class, 'checkoutIndex'])->name('checkout')->middleware('auth');
 Route::get('/checkout/create', [OrderHistoryController::class, 'create'])->name('orderHistpryCreate')->middleware('auth');
