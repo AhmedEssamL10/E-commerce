@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apis\Auth\LoginController;
 use App\Http\Controllers\Apis\Auth\RegisterController;
 use App\Http\Controllers\Apis\HomeController;
 use App\Http\Controllers\Apis\ProductController;
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('products', [ProductController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
-
 //Auth
 Route::post('users/register', RegisterController::class);
+Route::post('users/login', [LoginController::class, 'login']);
+Route::post('users/logout', [LoginController::class, 'logout']);
+Route::post('users/logout-From-All-Devices', [LoginController::class, 'logoutFromAllDevices']);
