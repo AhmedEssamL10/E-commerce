@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Apis\Auth;
 
 use App\Models\User;
+use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Traits\ApiResponses;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -23,6 +24,24 @@ class LoginController extends Controller
             return $this->error(['email' => 'wrong email or password'], 'wrong info', '401');
         }
         $user->token = 'bearer ' . $user->createToken($request->device_name)->plainTextToken;
+        //verification
         return $this->data(compact('user'));
+    }
+    public function logoutFromAllDevices(Request $request)
+    {
+        //  $AuthUser = Auth::guard('sanctum')->user()
+        $AuthUser = $request->user('sanctum');
+        $AuthUser->tokens()->delete();
+        return $this->success('all user dedvices is logout');
+    }
+    public function logout(Request $request)
+    {
+        $AuthUser = $request->user('sanctum');
+        $token = $request->header('Authorization');
+        $tokenExp = explode('|', substr($token, 7));
+        $tokenId = $tokenExp[0];
+
+        $AuthUser->tokens()->where('id', $tokenId)->delete();
+        return $this->success("Current Device Has Been Logged Out Successfully");
     }
 }
