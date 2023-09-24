@@ -6,6 +6,7 @@ use App\Http\Controllers\Tables\AddressController;
 use App\Http\Controllers\Tables\ProductController;
 use App\Http\Controllers\Tables\CartController;
 use App\Http\Controllers\Tables\ComplaintController;
+use App\Http\Controllers\Tables\NewsController;
 use App\Http\Controllers\Tables\OrderHistoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +67,8 @@ Route::prefix('/favorate')->middleware('auth')->name('favorate')->controller(Fav
     Route::get('/delete/{id}', 'delete')->name('.delete');
     Route::get('/deleteAll',  'deleteAll')->name('.deleteAll');
 });
-Auth::routes(['verify' => true]);
+//news
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
+Auth::routes(['verify' => true]);
 Auth::routes();

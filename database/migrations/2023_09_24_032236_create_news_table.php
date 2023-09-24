@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('desc');
             $table->foreignId('admin_id')->constrained();
+            $table->string('image');
             $table->timestamps();
         });
     }
