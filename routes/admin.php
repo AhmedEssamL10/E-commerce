@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\Tables\BrandController;
 use App\Http\Controllers\Admin\Tables\CategoryController;
+use App\Http\Controllers\Admin\Tables\NewsController;
 use App\Http\Controllers\Admin\Tables\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +40,7 @@ Route::prefix('admin/dashboard/products')->middleware('admin_auth')->name('produ
     Route::get('/delete/{id}', 'delete')->name('delete');
 });
 // brands
-Route::prefix('brands')->middleware('verified')->name('brands.')->controller(BrandController::class)->group(function () {
+Route::prefix('brands')->middleware('admin_auth')->name('brands.')->controller(BrandController::class)->group(function () {
     Route::get('/all', 'index')->name('index');
     //create
     Route::get('/create', 'create')->name('create');
@@ -51,7 +52,19 @@ Route::prefix('brands')->middleware('verified')->name('brands.')->controller(Bra
     Route::get('/delete/{id}', 'delete')->name('delete');
 });
 // catigories
-Route::prefix('catigories')->middleware('verified')->name('catigories.')->controller(CategoryController::class)->group(function () {
+Route::prefix('catigories')->middleware('admin_auth')->name('catigories.')->controller(CategoryController::class)->group(function () {
+    Route::get('/all', 'index')->name('index');
+    //create
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    //edit
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    //delete
+    Route::get('/delete/{id}', 'delete')->name('delete');
+});
+// news
+Route::prefix('news')->middleware('admin_auth')->name('news.')->controller(NewsController::class)->group(function () {
     Route::get('/all', 'index')->name('index');
     //create
     Route::get('/create', 'create')->name('create');
