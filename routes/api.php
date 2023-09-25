@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apis\Auth\EmailVerificationController;
 use App\Http\Controllers\Apis\Auth\LoginController;
 use App\Http\Controllers\Apis\Auth\RegisterController;
 use App\Http\Controllers\Apis\HomeController;
@@ -28,3 +29,5 @@ Route::post('users/register', RegisterController::class);
 Route::post('users/login', [LoginController::class, 'login']);
 Route::post('users/logout', [LoginController::class, 'logout']);
 Route::post('users/logout-From-All-Devices', [LoginController::class, 'logoutFromAllDevices']);
+Route::post('users/send-code', [EmailVerificationController::class, 'sendCode']);
+Route::post('users/check-code', [EmailVerificationController::class, 'checkCode']);
