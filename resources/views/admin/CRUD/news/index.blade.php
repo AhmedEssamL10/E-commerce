@@ -8,7 +8,6 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -33,8 +32,6 @@
                                             <td>{{ $oneNews->created_at }}</td>
                                             <td>{{ $oneNews->updated_at }}</td>
                                             <td>
-
-                                                {{-- <div class="row"> --}}
                                                 <a href="{{ route('brands.delete', $oneNews->id) }}"
                                                     class="btn btn-outline-danger">
                                                     Delete</a>
@@ -42,39 +39,21 @@
                                                     class="btn btn-outline-warning">
                                                     Edit </a>
 
-                                                {{-- </div> --}}
-
                                             </td>
                                         </tr>
-                                        {{-- <p>{{ $product->en_name }}</p> --}}
                                     @endforeach
-
-
                             </table>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
     </aside>
-    <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
-
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->

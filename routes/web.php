@@ -44,12 +44,14 @@ Route::prefix('/cart')->middleware('verified')->controller(CartController::class
     Route::post('edit/{product_id}',  'edit')->name('editCartProduct');
 });
 //profile
-Route::get('/profile', function () {
-    return view('Pages.profile');
-})->name('profile');
-Route::post('/profile/edit', [AddressController::class, 'edit'])->name('addressEdit');
-Route::post('/profile/create', [AddressController::class, 'create'])->name('addressCreate');
-Route::post('/profile/changePassword', [UserController::class, 'changePassword'])->name('changePassword');
+Route::prefix('/profile')->middleware('verified')->group(function () {
+    Route::get('', function () {
+        return view('Pages.profile');
+    })->name('profile');
+    Route::post('/edit', [AddressController::class, 'edit'])->name('addressEdit');
+    Route::post('/create', [AddressController::class, 'create'])->name('addressCreate');
+    Route::post('/changePassword', [UserController::class, 'changePassword'])->name('changePassword');
+});
 
 Route::get('/about', function () {
     return view('Pages.about');

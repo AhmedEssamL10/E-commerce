@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\Tables\BrandController;
 use App\Http\Controllers\Admin\Tables\CategoryController;
 use App\Http\Controllers\Admin\Tables\NewsController;
 use App\Http\Controllers\Admin\Tables\ProductController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

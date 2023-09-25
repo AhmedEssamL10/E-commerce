@@ -40,7 +40,6 @@ class LoginController extends Controller
         $token = $request->header('Authorization');
         $tokenExp = explode('|', substr($token, 7));
         $tokenId = $tokenExp[0];
-
         $AuthUser->tokens()->where('id', $tokenId)->delete();
         return $this->success("Current Device Has Been Logged Out Successfully");
     }
