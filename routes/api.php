@@ -25,9 +25,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('products', [ProductController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
 //Auth
-Route::post('users/register', RegisterController::class);
-Route::post('users/login', [LoginController::class, 'login']);
-Route::post('users/logout', [LoginController::class, 'logout']);
-Route::post('users/logout-From-All-Devices', [LoginController::class, 'logoutFromAllDevices']);
-Route::post('users/send-code', [EmailVerificationController::class, 'sendCode']);
-Route::post('users/check-code', [EmailVerificationController::class, 'checkCode']);
+Route::prefix('users')->group(function () {
+    Route::post('/register', RegisterController::class);
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::post('/logout-From-All-Devices', [LoginController::class, 'logoutFromAllDevices']);
+    Route::post('/send-code', [EmailVerificationController::class, 'sendCode']);
+    Route::post('/check-code', [EmailVerificationController::class, 'checkCode']);
+    //forget password
+});

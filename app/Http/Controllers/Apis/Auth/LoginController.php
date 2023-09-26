@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -25,6 +24,9 @@ class LoginController extends Controller
         }
         $user->token = 'bearer ' . $user->createToken($request->device_name)->plainTextToken;
         //verification
+        if (is_null($user->email_verified_at)) {
+            return $this->data(compact('user'), 'user not verified', 401);
+        }
         return $this->data(compact('user'));
     }
     public function logoutFromAllDevices(Request $request)
