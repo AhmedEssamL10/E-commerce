@@ -24,11 +24,12 @@
                                     $sum = 0;
                                 @endphp
                                 @foreach ($products as $product)
-                                    <tr class="table-body-row">
+                                    <tr class="table-body-row" id="product-row-{{ $product->id }}">
                                         <td class="product-remove">
 
                                             <a href="{{ route('deleteCartProduct', $product->id) }} "
-                                                class="btn btn-danger">Delete</a>
+                                                class="btn btn-danger delete-from-cart"
+                                                data-product-id="{{ $product->id }}">Delete</a>
 
 
                                         </td>
@@ -103,7 +104,36 @@
     </div>
     </form>
     <!-- end cart -->
+@endsection
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.delete-from-cart').on('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
 
+                var link = $(this);
+                var productId = link.data('product-id');
 
+                $.ajax({
+                    url: link.attr('href'),
+                    method: 'GET',
+                    data: {
+                        product_id: productId,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        // Handle the success response
+                        console.log(response);
+                        $('#product-row-' + productId).remove();
 
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle the error response
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
