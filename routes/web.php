@@ -34,7 +34,7 @@ Route::prefix('/shop')->group(function () {
     Route::get('/subcategory/{subCategory_id}', [ProductController::class, 'filterBySubategories'])->name('productBySubcategories');
     Route::get('', [ProductController::class, 'index'])->name('shop');
     Route::get('/product-details/{product_id}', [ProductController::class, 'product_details'])->name('product_details');
-    Route::get('/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
+    Route::post('/{product_id}', [CartController::class, 'cart'])->name('AddToCart')->middleware('auth');
 });
 //cart
 Route::prefix('/cart')->middleware('verified')->controller(CartController::class)->group(function () {

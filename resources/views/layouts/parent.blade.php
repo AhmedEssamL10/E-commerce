@@ -301,6 +301,8 @@
     <!-- end copyright -->
 
     <!-- jquery -->
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> --}}
     <script src="{{ asset('assets/js/jquery-1.11.3.min.js') }}"></script>
     <!-- bootstrap -->
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -320,6 +322,7 @@
     <script src="{{ asset('assets/js/sticker.js') }}"></script>
     <!-- main js -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    @yield('js')
 
 </body>
 
