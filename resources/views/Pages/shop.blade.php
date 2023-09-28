@@ -20,13 +20,18 @@
                                 <a href="{{ route('AddToCart', $product->id) }}" class="cart-btn add-to-cart-link">
                                     <i class="fas fa-shopping-cart"></i> Add to Cart
                                 </a>
-                                <a href="{{ route('favorate.create', $product->id) }}" class="cart-btn">
+                                <a href="{{ route('favorate.create', $product->id) }}" class="cart-btn add-to-favorite-link"
+                                    data-product-id="{{ $product->id }}">
                                     <i class="fas fa-heart-cart"></i> Favorite
                                 </a>
                             </span>
-                            <div class="success-message" style="display: none; color: forestgreen ; font: bold">Product
+                            <div class="favorite-message" style="display: none; color: forestgreen ; font: bold">Product
+                                added to favorites!</div>
+                            <div class="success-message bs-success" style="display: none; color: forestgreen ; font: bold">
+                                Product
                                 added
-                                successfully!</div>
+                                successfully!
+                            </div>
 
                         </div>
                     </div>
@@ -54,7 +59,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.add-to-cart-link').on('click', function(event) {
+            $('.add-to-cart-link , .add-to-favorite-link').on('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
 
                 var link = $(this);
@@ -62,7 +67,7 @@
 
                 $.ajax({
                     url: link.attr('href'),
-                    method: 'POST',
+                    method: 'GET',
                     data: {
                         product_id: productId,
                         _token: "{{ csrf_token() }}"
@@ -70,8 +75,13 @@
                     success: function(response) {
                         // Handle the success response
                         console.log(response);
-                        link.closest('.single-product-item').find('.success-message').fadeIn()
-                            .delay(2000).fadeOut();
+                        if (link.hasClass('add-to-cart-link')) {
+                            link.closest('.single-product-item').find('.success-message')
+                                .fadeIn().delay(2000).fadeOut();
+                        } else if (link.hasClass('add-to-favorite-link')) {
+                            link.closest('.single-product-item').find('.favorite-message')
+                                .fadeIn().delay(2000).fadeOut();
+                        }
                     },
                     error: function(xhr, status, error) {
                         // Handle the error response
