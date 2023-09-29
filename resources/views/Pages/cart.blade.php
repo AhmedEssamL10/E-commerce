@@ -19,7 +19,7 @@
                                     <th class="product-total">Total</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="products">
                                 @php
                                     $sum = 0;
                                 @endphp
@@ -85,7 +85,9 @@
                         </table>
                         <div class="cart-buttons">
                             <a href="{{ route('checkout') }}" class="boxed-btn black">Check Out</a>
-                            <a href="{{ route('deleteAllCartProducts') }}" class="boxed-btn black">Delete all</a>
+                            <a href="{{ route('deleteAllCartProducts') }}"
+                                class="boxed-btn black deleteAll-from-cart">Delete
+                                all</a>
                         </div>
                     </div>
 
@@ -109,7 +111,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.delete-from-cart').on('click', function(event) {
+            $('.delete-from-cart , .deleteAll-from-cart').on('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
 
                 var link = $(this);
@@ -124,8 +126,14 @@
                     },
                     success: function(response) {
                         // Handle the success response
+
                         console.log(response);
-                        $('#product-row-' + productId).remove();
+                        if (link.hasClass('delete-from-cart')) {
+                            $('#product-row-' + productId).remove();
+                        }
+                        if (link.hasClass('deleteAll-from-cart')) {
+                            $('#products').remove();
+                        }
 
                     },
                     error: function(xhr, status, error) {
