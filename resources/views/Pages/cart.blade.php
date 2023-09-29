@@ -43,7 +43,7 @@
 
                                             <td class="product-quantity"><input type="number" name="quantity"
                                                     placeholder="{{ $product->quantity }}">
-                                                <button class="btn btn-warning">Edit</button>
+                                                <button class="btn btn-warning edit-quantity">Edit</button>
                                             </td>
                                         </form>
                                         <td class="product-total">{{ $product->price * $product->quantity }}</td>
