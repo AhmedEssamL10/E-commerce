@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Apis\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
+use App\Mail\EmailVerificationCode;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class EmailVerificationController extends Controller
 {
@@ -29,6 +31,7 @@ class EmailVerificationController extends Controller
         $user->save();
         $user->token = $token;
         //send mail
+        Mail::to($user->email)->send(new EmailVerificationCode($user));
         //return user data
         return $this->data(compact('user'));
     }

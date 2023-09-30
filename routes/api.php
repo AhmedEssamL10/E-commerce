@@ -30,7 +30,7 @@ Route::prefix('users')->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/logout', [LoginController::class, 'logout']);
     Route::post('/logout-From-All-Devices', [LoginController::class, 'logoutFromAllDevices']);
-    Route::post('/send-code', [EmailVerificationController::class, 'sendCode']);
-    Route::post('/check-code', [EmailVerificationController::class, 'checkCode']);
+    Route::post('/send-code', [EmailVerificationController::class, 'sendCode'])->middleware('auth:sanctum');
+    Route::post('/check-code', [EmailVerificationController::class, 'checkCode'])->middleware('auth:sanctum');
     //forget password
 });
