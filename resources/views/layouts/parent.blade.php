@@ -128,7 +128,7 @@
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
+                                                    {{ __('message.logout') }}
                                                 </a>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -160,16 +160,25 @@
                                     @endguest
                                 </ul>
                                 </li>
+                                <li><a href="" style="pointer-events: none">Lang</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{ route('lang.en') }}">English</a></li>
+                                        <li><a href="{{ route('lang.ar') }}">Arabic</a></li>
+                                    </ul>
+                                </li>
                                 <li>
                                     <div class="header-icons">
-                                        <a class="shopping-cart" href="cart"><i class="fas fa-shopping-cart"></i></a>
+                                        <a class="shopping-cart" href="cart"><i
+                                                class="fas fa-shopping-cart"></i></a>
                                         <a class="mobile-hide search-bar-icon" href="#"><i
                                                 class="fas fa-search"></i></a>
                                     </div>
                                 </li>
 
+
                             </ul>
                         </nav>
+
                         <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 
                         <div class="mobile-menu"></div>
