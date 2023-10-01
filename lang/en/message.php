@@ -1,4 +1,11 @@
 <?php
 return [
-    'logout' => 'Logout'
+    'logout' => 'Logout',
+    'login' => 'Login',
+    'register' => 'Register',
+    'home' => 'Home',
+    'categories' => 'Categories',
+    'subcategories' => 'Subcategories',
+    'news' => 'News',
+    'shop' => 'Shop',
 ];

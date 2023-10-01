@@ -70,11 +70,12 @@
                         <!-- menu start -->
                         <nav class="main-menu">
                             <ul>
-                                <li class="current-list-item"><a href="{{ route('home') }}">Home</a>
+                                <li class="current-list-item"><a
+                                        href="{{ route('home') }}">{{ __('message.home') }}</a>
 
                                 </li>
                                 <li><a href="about">About</a></li>
-                                <li><a href="" style="pointer-events: none">Categories</a>
+                                <li><a href="" style="pointer-events: none">{{ __('message.categories') }}</a>
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
                                             <li><a
@@ -84,7 +85,8 @@
 
                                     </ul>
                                 </li>
-                                <li><a href="" style="pointer-events: none">Subcategories</a>
+                                <li><a href=""
+                                        style="pointer-events: none">{{ __('message.subcategories') }}</a>
                                     <ul class="sub-menu">
                                         @foreach ($subcategories as $subcategory)
                                             <li><a
@@ -98,8 +100,8 @@
                                     </li>
                                 @endauth
                                 <li><a href="{{ route('contact') }}">Contact</a></li>
-                                <li><a href="{{ route('news.index') }}">News</a></li>
-                                <li><a href="{{ route('shop') }}">Shop</a>
+                                <li><a href="{{ route('news.index') }}">{{ __('message.news') }}</a></li>
+                                <li><a href="{{ route('shop') }}">{{ __('message.shop') }}</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{ route('shop') }}">Shop</a></li>
                                         <li><a href="{{ route('checkout') }}">Check Out</a></li>
@@ -146,14 +148,15 @@
                                     @guest
                                         @if (Route::has('login'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                                <a class="nav-link"
+                                                    href="{{ route('login') }}">{{ __('message.login') }}</a>
                                             </li>
                                         @endif
 
                                         @if (Route::has('register'))
                                             <li class="nav-item">
                                                 <a class="nav-link"
-                                                    href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                    href="{{ route('register') }}">{{ __('message.register') }}</a>
                                             </li>
                                         @endif
                                     @else
