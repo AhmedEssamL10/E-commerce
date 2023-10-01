@@ -110,7 +110,6 @@
                                                                     <th class="product-name">Name</th>
                                                                     <th class="product-price">Price</th>
                                                                     <th class="product-price">Quantity</th>
-
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -137,25 +136,18 @@
                                                                         @endphp
                                                                     </tr>
                                                                 @endforeach
-
-
                                                             </tbody>
                                                         </table>
-
                                                     </div>
                                                 </div>
-
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
                 <div class="col-lg-4">
                     <div class="order-details-wrap">
                         <table class="order-details">
@@ -181,7 +173,6 @@
                                 @endforeach
                             </tbody>
                             <tbody class="checkout-details">
-
                                 <thead>
                                     <tr>
                                         <th>Shipping</th>
@@ -189,7 +180,6 @@
                                     </tr>
                                 </thead>
                                 <tr>
-
                                     <td>$50</td>
                                     <td>{{ $sum + 50 }}</td>
                                 </tr>

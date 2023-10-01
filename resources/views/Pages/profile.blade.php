@@ -1,6 +1,5 @@
 @extends('layouts.bradecrum')
 @section('title', 'Profile')
-
 @section('contant2')
     <!-- check out section -->
     @include('layouts.messages')
@@ -67,7 +66,6 @@
                                                 @enderror
                                                 <div class="order-details-wrap">
                                                     <button class="btn btn-primary">Change</button>
-
                                             </form>
                                         </div>
                                     </div>
@@ -181,11 +179,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
         </div>
     </div>
     </div>

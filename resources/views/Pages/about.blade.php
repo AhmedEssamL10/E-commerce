@@ -1,7 +1,6 @@
 @extends('layouts.bradecrum')
 @section('title', 'About Us')
 @section('contant2')
-
     <!-- featured section -->
     {{-- <div class="feature-bg"> --}}
     <div class="container">
@@ -75,7 +74,6 @@
         </div>
     </section>
     <!-- end shop banner --> --}}
-
     <!-- team section -->
     <div class="mt-150">
         <div class="container">
@@ -126,7 +124,6 @@
         </div>
     </div>
     <!-- end team section -->
-
     <!-- testimonail-section -->
     <div class="testimonail-section mt-80 mb-150">
         <div class="container">

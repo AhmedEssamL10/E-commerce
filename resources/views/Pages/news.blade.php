@@ -2,7 +2,6 @@
 @section('title', 'News')
 @section('desc', 'Leatest Products and News')
 @section('contant2')
-
     <!-- latest news -->
     <div class="latest-news mt-150 mb-150">
         <div class="container">
@@ -28,10 +27,7 @@
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
-
             <div class="row">
                 <div class="container">
                     <div class="row">

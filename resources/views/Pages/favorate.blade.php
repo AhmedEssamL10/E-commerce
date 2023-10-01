@@ -15,7 +15,6 @@
                                     <th class="product-image">Product Image</th>
                                     <th class="product-name">Name</th>
                                     <th class="product-price">Price</th>
-
                                 </tr>
                             </thead>
                             <tbody id="products">
@@ -37,26 +36,19 @@
                                         <td class="product-price">${{ $product->price }} </td>
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
-
                     </div>
                 </div>
-
-
             </div>
             <div class="cart-buttons" style="padding-left: 75%">
                 <a href="{{ route('shop') }}" class="boxed-btn black">Shop</a>
                 <a href="{{ route('favorate.deleteAll') }}" class="boxed-btn black deleteAll-from-favorate">Delete all</a>
             </div>
         </div>
-
     </div>
     </form>
     <!-- end cart -->
-
 @endsection
 @section('js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -77,7 +69,6 @@
                     },
                     success: function(response) {
                         // Handle the success response
-
                         console.log(response);
                         if (link.hasClass('delete-from-favorate')) {
                             $('#product-row-' + productId).remove();

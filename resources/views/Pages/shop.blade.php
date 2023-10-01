@@ -37,7 +37,6 @@
                     </div>
                 @endforeach
             </div>
-
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="pagination-wrap">
@@ -55,40 +54,42 @@
     </div>
     <!-- end products -->
 @endsection
-@section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.add-to-cart-link , .add-to-favorite-link').on('click', function(event) {
-                event.preventDefault(); // Prevent default link behavior
+@auth
+    @section('js')
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.add-to-cart-link , .add-to-favorite-link').on('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
 
-                var link = $(this);
-                var productId = link.data('product-id');
+                    var link = $(this);
+                    var productId = link.data('product-id');
 
-                $.ajax({
-                    url: link.attr('href'),
-                    method: 'GET',
-                    data: {
-                        product_id: productId,
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function(response) {
-                        // Handle the success response
-                        console.log(response);
-                        if (link.hasClass('add-to-cart-link')) {
-                            link.closest('.single-product-item').find('.success-message')
-                                .fadeIn().delay(2000).fadeOut();
-                        } else if (link.hasClass('add-to-favorite-link')) {
-                            link.closest('.single-product-item').find('.favorite-message')
-                                .fadeIn().delay(2000).fadeOut();
+                    $.ajax({
+                        url: link.attr('href'),
+                        method: 'GET',
+                        data: {
+                            product_id: productId,
+                            _token: "{{ csrf_token() }}"
+                        },
+                        success: function(response) {
+                            // Handle the success response
+                            console.log(response);
+                            if (link.hasClass('add-to-cart-link')) {
+                                link.closest('.single-product-item').find('.success-message')
+                                    .fadeIn().delay(2000).fadeOut();
+                            } else if (link.hasClass('add-to-favorite-link')) {
+                                link.closest('.single-product-item').find('.favorite-message')
+                                    .fadeIn().delay(2000).fadeOut();
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle the error response
+                            console.log(xhr.responseText);
                         }
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle the error response
-                        console.log(xhr.responseText);
-                    }
+                    });
                 });
             });
-        });
-    </script>
-@endsection
+        </script>
+    @endsection
+@endauth

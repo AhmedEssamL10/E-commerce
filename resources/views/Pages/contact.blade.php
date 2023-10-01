@@ -70,7 +70,6 @@
         </div>
     </div>
     <!-- end contact form -->
-
     {{-- <!-- find our location -->
         <div class="find-location blue-bg">
             <div class="container">

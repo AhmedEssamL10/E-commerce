@@ -30,8 +30,6 @@
                                             <a href="{{ route('deleteCartProduct', $product->id) }} "
                                                 class="btn btn-danger delete-from-cart"
                                                 data-product-id="{{ $product->id }}">Delete</a>
-
-
                                         </td>
                                         <td class="product-image"><img
                                                 src="{{ asset('images/product//' . $product->image) }}" alt="">
@@ -52,13 +50,10 @@
                                         @endphp
                                     </tr>
                                 @endforeach
-
-
                             </tbody>
                         </table>
                     </div>
                 </div>
-
                 <div class="col-lg-4">
                     <div class="total-section">
                         <table class="total-table">
@@ -90,14 +85,12 @@
                                 all</a>
                         </div>
                     </div>
-
                     <div class="coupon-section">
                         <h3>Apply Coupon</h3>
                         <div class="coupon-form-wrap">
                             <form action="index.html">
                                 <p><input type="text" placeholder="Coupon"></p>
                                 <p><input type="submit" value="Apply"></p>
-
                         </div>
                     </div>
                 </div>
