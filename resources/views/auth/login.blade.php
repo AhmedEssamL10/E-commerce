@@ -65,8 +65,6 @@
                                     </button>
                                     <div class="col-md-8 offset-md-4"> <a href="/auth/google"
                                             class="btn btn-primary">google</a></div>
-
-
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
