@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangougeController;
 use App\Http\Controllers\Tables\FavorateController;
@@ -78,4 +79,10 @@ Route::middleware('lang')->group(function () {
     Route::get('/lang/ar', [LangougeController::class, 'ar'])->name('lang.ar');
     Auth::routes(['verify' => true]);
     Auth::routes();
+    //socialite
+    Route::get('auth/google', [SocialController::class, 'redirectToGoogle']);
+    Route::get('auth/google/callback', [SocialController::class, 'handleGoogleCallback']);
+
+    Route::get('auth/facebook', [SocialController::class, 'redirectToFacebook']);
+    Route::get('auth/facebook/callback', [SocialController::class, 'handleFacebookCallback']);
 });
