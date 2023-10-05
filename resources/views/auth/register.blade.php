@@ -93,6 +93,9 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
+                                    <a style="width: 18%" href="/auth/google" class="btn btn-primary"><img
+                                            src="{{ asset('images/search.png') }}" style="width: 50%; height: 50%;"
+                                            alt=""></a>
                                 </div>
                             </div>
                         </form>

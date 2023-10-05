@@ -60,8 +60,9 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Login') }}
                                     </button>
-                                    <div class="col-md-8 offset-md-4"> <a href="/auth/google"
-                                            class="btn btn-primary">google</a></div>
+                                    <a style="width: 12%" href="/auth/google" class="btn btn-primary"><img
+                                            src="{{ asset('images/search.png') }}" style="width: 50%; height: 50%;"
+                                            alt=""></a>
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}

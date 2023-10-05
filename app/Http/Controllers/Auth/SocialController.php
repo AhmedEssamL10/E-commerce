@@ -41,25 +41,25 @@ class SocialController extends Controller
             return redirect(route('home'));
         }
     }
-    public function handleFacebookCallback()
-    {
+    // public function handleFacebookCallback()
+    // {
 
-        $user = Socialite::driver(driver: 'facebook')->user();
-        $finduser = User::where('social_id', $user->id)->first();
-        if ($finduser) {
-            Auth::login($finduser);
-            return response()->json($finduser);
-        } else {
-            $newuser = User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'phone' => $user->phone,
-                'social_id' => $user->id,
-                'social_type' => 'facebook',
-                'password' => Hash::make('my-facebook')
-            ]);
-            Auth::Login($newuser);
-            return redirect(route('home'));
-        }
-    }
+    //     $user = Socialite::driver(driver: 'facebook')->user();
+    //     $finduser = User::where('social_id', $user->id)->first();
+    //     if ($finduser) {
+    //         Auth::login($finduser);
+    //         return response()->json($finduser);
+    //     } else {
+    //         $newuser = User::create([
+    //             'name' => $user->name,
+    //             'email' => $user->email,
+    //             'phone' => $user->phone,
+    //             'social_id' => $user->id,
+    //             'social_type' => 'facebook',
+    //             'password' => Hash::make('my-facebook')
+    //         ]);
+    //         Auth::Login($newuser);
+    //         return redirect(route('home'));
+    //     }
+    // }
 }

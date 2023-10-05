@@ -35,10 +35,10 @@ return [
         'client_secret' => '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',
         'redirect' => 'http://127.0.0.1:8000/auth/google/callback',
     ],
-    'facebook' => [
-        'client_id' => env('669849278436663'),
-        'client_secret' => env('38aa3aaf94a2ea4b4f8496fce0389830'),
-        'redirect' => 'http://127.0.0.1:8000/auth/facebook/callback',
-    ],
+    // 'facebook' => [
+    //     'client_id' => '669849278436663',
+    //     'client_secret' => '38aa3aaf94a2ea4b4f8496fce0389830',
+    //     'redirect' => 'http://127.0.0.1:8000/auth/facebook/callback',
+    // ],
 
 ];
