@@ -36,7 +36,6 @@ class SocialController extends Controller
                 'social_id' => $user->id,
                 'social_type' => 'google',
                 'password' => Hash::make('my-google'),
-
             ]);
             Auth::Login($newuser);
             return redirect(route('home'));
