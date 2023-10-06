@@ -1,5 +1,5 @@
 @extends('admin.layouts.admin')
-@section('title', 'Create News')
+@section('title', 'Update News')
 @section('contant')
     @include('admin.layouts.messages')
     <form method="POST" enctype="multipart/form-data" action="{{ route('admin.news.update', $news->id) }}">
@@ -25,8 +25,13 @@
             @enderror
         </div>
         <div class="mb-3">
-            <input class="form-control" type="file" id="formFile" name="image" value="{{ old('image') }}">
+            <img src="{{ asset('images/news/' . $news->image) }}" style="width: 20%" alt="">
+            <input class="form-control" type="file" id="formFile" name="image"
+                value="{{ old('image') ?? $news->image }}">
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        @error('image')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 @endsection
