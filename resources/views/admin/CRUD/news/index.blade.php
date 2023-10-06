@@ -32,10 +32,10 @@
                                             <td>{{ $oneNews->created_at }}</td>
                                             <td>{{ $oneNews->updated_at }}</td>
                                             <td>
-                                                <a href="{{ route('brands.delete', $oneNews->id) }}"
+                                                <a href="{{ route('admin.news.delete', $oneNews->id) }}"
                                                     class="btn btn-outline-danger">
                                                     Delete</a>
-                                                <a href="{{ route('brands.edit', $oneNews->id) }}"
+                                                <a href="{{ route('admin.news.edit', $oneNews->id) }}"
                                                     class="btn btn-outline-warning">
                                                     Edit </a>
 

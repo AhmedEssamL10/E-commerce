@@ -344,13 +344,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('news.index') }}" class="nav-link ">
+                                <a href="{{ route('admin.news.index') }}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All News</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('catigories.create') }}" class="nav-link">
+                                <a href="{{ route('admin.news.create') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create News</p>
                                 </a>

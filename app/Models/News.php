@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'title',
+        'desc',
+        'image',
+        'admin_id'
+    ];
     // Address belong to one admin
     public function admin()
     {

@@ -63,7 +63,7 @@ Route::prefix('catigories')->middleware('admin_auth')->name('catigories.')->cont
     Route::get('/delete/{id}', 'delete')->name('delete');
 });
 // news
-Route::prefix('news')->middleware('admin_auth')->name('news.')->controller(NewsController::class)->group(function () {
+Route::prefix('news')->middleware('admin_auth')->name('admin.news.')->controller(NewsController::class)->group(function () {
     Route::get('/all', 'index')->name('index');
     //create
     Route::get('/create', 'create')->name('create');
