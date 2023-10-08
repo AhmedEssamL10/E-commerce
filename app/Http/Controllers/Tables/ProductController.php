@@ -11,7 +11,8 @@ class ProductController extends Controller
     //
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(5);
+        // $products = Product::all();
         return view('Pages.shop', compact('products'));
     }
     public function filterByBrands($brand_id)
