@@ -51,7 +51,6 @@
         <div class="small-box bg-danger">
             <div class="inner">
                 <h3>65</h3>
-
                 <p>Unique Visitors</p>
             </div>
             <div class="icon">
@@ -67,30 +66,50 @@
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Inbox</h3>
-                        <!-- /.card-tools -->
+
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="table-responsive mailbox-messages">
                             <table class="table table-hover table-striped">
-                                <tbody>
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <div class="icheck-primary">
-                                                <input type="checkbox" value="" id="check1">
-                                                <label for="check1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="mailbox-star"><a href="#"><i
-                                                    class="fas fa-star text-warning"></i></a></td>
-                                        <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                        <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution
-                                            to this problem...
-                                        </td>
-                                        <td class="mailbox-attachment"></td>
-                                        <td class="mailbox-date">5 mins ago</td>
+                                        <th></th>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Subject</th>
+                                        <th>Date</th>
                                     </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($complaints as $complaint)
+                                        <tr id="complaint-row-{{ $complaint->id }}">
+                                            <td>
+                                                <a href="{{ route('admin.complaints.delete', $complaint->id) }}"
+                                                    class="btn btn-default btn-sm delete-complaint"
+                                                    data-complaint-id="{{ $complaint->id }}">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                            <td class="mailbox-star"><a href="#"><i
+                                                        class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a
+                                                    href="read-mail.html">{{ $complaint->user_name }}</a>
+                                            </td>
+                                            <td class="mailbox-name"><a
+                                                    href="read-mail.html">{{ $complaint->user_email }}</a>
+                                            </td>
+                                            <td class="mailbox-name"><a
+                                                    href="read-mail.html">{{ $complaint->user_phone }}</a>
+                                            </td>
+                                            <td class="mailbox-subject"><b>{{ $complaint->subject }}</b>
+                                            </td>
+
+                                            <td class="mailbox-date">{{ $complaint->created_at }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- /.table -->
@@ -110,4 +129,38 @@
     <!-- ./col -->
     </div>
 
+@endsection
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.delete-complaint').on('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                var link = $(this);
+                var complaintId = link.data('complaint-id');
+
+                $.ajax({
+                    url: link.attr('href'),
+                    method: 'GET',
+                    data: {
+                        complaint_id: complaintId,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        // Handle the success response
+                        console.log(response);
+                        if (link.hasClass('delete-complaint')) {
+                            $('#complaint-row-' + complaintId).remove();
+                        }
+
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle the error response
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

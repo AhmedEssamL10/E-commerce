@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminRegisterController;
 use App\Http\Controllers\Admin\Tables\BrandController;
 use App\Http\Controllers\Admin\Tables\CategoryController;
+use App\Http\Controllers\Admin\Tables\ComplaintsController;
 use App\Http\Controllers\Admin\Tables\NewsController;
 use App\Http\Controllers\Admin\Tables\ProductController;
+use App\Http\Controllers\Tables\ComplaintController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +73,10 @@ Route::prefix('news')->middleware('admin_auth')->name('admin.news.')->controller
     //edit
     Route::get('/edit/{id}', 'edit')->name('edit');
     Route::post('/update/{id}', 'update')->name('update');
+    //delete
+    Route::get('/delete/{id}', 'delete')->name('delete');
+});
+Route::prefix('complaints')->middleware('admin_auth')->name('admin.complaints.')->controller(ComplaintsController::class)->group(function () {
     //delete
     Route::get('/delete/{id}', 'delete')->name('delete');
 });
