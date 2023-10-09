@@ -36,15 +36,15 @@
                                         </td>
                                         <td class="product-name">{{ $product->en_name }}</td>
                                         <td class="product-price">${{ $product->price }}</td>
-                                        <form method="POST" action="{{ route('editCartProduct', $product->id) }}">
+                                        <form method="POST" action="{{ route('editCartProduct', $product->id) }}"
+                                            id="editform">
                                             @csrf
-
                                             <td class="product-quantity"><input type="number" name="quantity"
-                                                    placeholder="{{ $product->quantity }}">
+                                                    class="quantity-input" placeholder="{{ $product->quantity }}">
                                                 <button class="btn btn-warning edit-quantity">Edit</button>
                                             </td>
                                         </form>
-                                        <td class="product-total">{{ $product->price * $product->quantity }}</td>
+                                        <td class="product-total">${{ $product->price * $product->quantity }}</td>
                                         @php
                                             $sum = $sum + $product->price * $product->quantity;
                                         @endphp
@@ -127,6 +127,7 @@
                         if (link.hasClass('deleteAll-from-cart')) {
                             $('#products').remove();
                         }
+                        updateTotal(); // Update the total after deleting a product
 
                     },
                     error: function(xhr, status, error) {
@@ -135,6 +136,55 @@
                     }
                 });
             });
+
+            $('.edit-quantity').on('click', function(event) {
+                event.preventDefault(); // Prevent default button behavior
+
+                var row = $(this).closest('tr');
+                var productId = row.attr('id').split('-')[2];
+                var quantity = row.find('.quantity-input').val();
+
+                $.ajax({
+                    url: "{{ route('editCartProduct', ':id') }}".replace(':id', productId),
+                    method: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        quantity: quantity
+                    },
+                    success: function(response) {
+                        // Handle the success response
+
+                        console.log(response);
+                        row.find('.product-total').text(response.total);
+                        updateTotal(); // Update the total after editing the quantity
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle the error response
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+
+            $('.quantity-input').on('input', function() {
+                var row = $(this).closest('tr');
+                var price = parseFloat(row.find('.product-price').text().replace('$', ''));
+                var quantity = $(this).val();
+                var productTotal = price * quantity;
+                row.find('.product-total').text('$' + productTotal);
+                updateTotal(); // Update the total after changing the quantity
+            });
+
+            function updateTotal() {
+                var sum = 0;
+                $('.product-total').each(function() {
+                    sum += parseFloat($(this).text().replace('$', ''));
+                });
+                var subtotal = sum;
+                var total = (parseFloat(subtotal) + 45);
+
+                $('#subtotal').text('$' + subtotal);
+                $('#total').text('$' + total);
+            }
         });
     </script>
 @endsection

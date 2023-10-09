@@ -81,5 +81,6 @@
                 });
             });
         </script>
+        
     @endsection
 @endauth

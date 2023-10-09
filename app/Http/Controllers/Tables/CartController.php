@@ -43,10 +43,11 @@ class CartController extends Controller
     }
     public function edit($product_id, Request $request)
     {
-        Cart::where('product_id', '=', $product_id)->update([
+        $product = Cart::where('product_id', '=', $product_id)->update([
             'quantity' => $request->quantity
         ]);
-        return redirect(route('cart'));
+        // return redirect(route('cart'));
+        return response()->json(['message' => 'Quantity updated successfully', 'product' => $product]);
     }
     public function checkoutIndex()
     {
