@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin\Tables;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Traits\UploadImage;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+    use UploadImage;
     //
     public function index()
     {
@@ -26,14 +28,17 @@ class BrandController extends Controller
             'status' => 'required|in:0,1',
             'image' => 'required|image'
         ]);
-        $imageName = '';
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $extention = $image->getClientOriginalExtension();
-            $imageName = 'brand-' . uniqid() . '.' . $extention;
-            $path = public_path('images/brand-logo');
-            $image->move($path, $imageName);
-        }
+        // $imageName = '';
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $extention = $image->getClientOriginalExtension();
+        //     $imageName = 'brand-' . uniqid() . '.' . $extention;
+        //     $path = public_path('images/brand-logo');
+        //     $image->move($path, $imageName);
+        // }
+        // if ($request->hasFile('image')) {
+        $imageName =    $this->upload($request->file('image'), 'brand-', 'brand-logo');
+        // }
         Brand::create([
             'en_name' => $request->en_name,
             'ar_name' => $request->ar_name,
@@ -62,13 +67,13 @@ class BrandController extends Controller
             $extention = $image->getClientOriginalExtension();
             $imageName = 'brands-' . uniqid() . '.' . $extention;
             $path = public_path('images\brand-logo');
-            $dbimage = Brand::select('image')->where('id', '=', $id)->first();
             $oldpath1 = $path . '\\' . $dbimage->image;
             if (file_exists($oldpath1)) {
                 unlink($oldpath1);
             }
             $image->move($path, $imageName);
         }
+
         Brand::where('id', '=', $id)->update([
             'en_name' => $request->en_name,
             'ar_name' => $request->ar_name,
