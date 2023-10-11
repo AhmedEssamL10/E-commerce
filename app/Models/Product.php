@@ -22,4 +22,9 @@ class Product extends Model
         'subcategory_id',
         'category_id',
     ];
+    public function order_history()
+    {
+        # code...
+        return $this->hasMany('App\Models\order_history');
+    }
 }

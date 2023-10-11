@@ -25,4 +25,9 @@ class OrderHistoryController extends Controller
         Cart::where('user_id', '=', Auth::user()->id)->delete();
         return redirect(route('home'))->with('success', 'your order has been requested');
     }
+    public function index()
+    {
+        $orders = order_history::where('user_id', Auth::user()->id)->with('product')->paginate(5);
+        return view('Pages.profile', compact('orders'));
+    }
 }

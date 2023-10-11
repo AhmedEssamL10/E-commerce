@@ -13,4 +13,9 @@ class order_history extends Model
         'product_id',
         'quantity'
     ];
+    // Address belong to one user
+    public function product()
+    {
+        return $this->belongsTo('App\Models\product');
+    }
 }

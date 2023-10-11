@@ -26,7 +26,6 @@
                                 @foreach ($products as $product)
                                     <tr class="table-body-row" id="product-row-{{ $product->id }}">
                                         <td class="product-remove">
-
                                             <a href="{{ route('deleteCartProduct', $product->id) }} "
                                                 class="btn btn-danger delete-from-cart"
                                                 data-product-id="{{ $product->id }}">Delete</a>

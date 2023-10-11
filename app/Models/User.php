@@ -53,4 +53,9 @@ class User extends Authenticatable implements MustVerifyEmail
         # code...
         return $this->hasMany('App\Models\Address');
     }
+    public function order_history()
+    {
+        # code...
+        return $this->hasMany('App\Models\order_history');
+    }
 }

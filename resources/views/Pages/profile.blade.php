@@ -173,7 +173,42 @@
                                 data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div class="shipping-address-form">
-                                        <p>Your shipping address form is here.</p>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="cart-table-wrap">
+                                                <table class="cart-table">
+                                                    <thead class="cart-table-head">
+                                                        <tr class="table-head-row">
+                                                            <th class="product-name">Name</th>
+                                                            <th class="product-price">Price</th>
+                                                            <th class="product-quantity">Quantity</th>
+                                                            <th class="product-total">Total</th>
+                                                            <th class="product-total">date</th>
+                                                        </tr>
+                                                    </thead>
+                                                    @foreach ($orders as $order)
+                                                        <tbody>
+                                                            <tr class="table-body-row">
+                                                                <td class="product-name">{{ $order->product->en_name }}
+                                                                </td>
+                                                                <td class="product-name">${{ $order->product->price }}
+                                                                </td>
+                                                                <td class="product-name">{{ $order->quantity }}
+                                                                </td>
+                                                                <td class="product-name">
+                                                                    ${{ $order->quantity * $order->product->price }}
+                                                                </td>
+                                                                <td class="product-name">{{ $order->product->created_at }}
+                                                                </td>
+                                                            </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                    <div class="pagination pagination-lg justify-content-center ">
+                                                        {{ $orders->links() }}
+                                                    </div>
+                                                </table>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

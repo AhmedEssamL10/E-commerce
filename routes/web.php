@@ -48,9 +48,7 @@ Route::middleware('lang')->group(function () {
     });
     //profile
     Route::prefix('/profile')->middleware('verified')->group(function () {
-        Route::get('', function () {
-            return view('Pages.profile');
-        })->name('profile');
+        Route::get('', [OrderHistoryController::class, 'index'])->name('profile');
         Route::post('/edit', [AddressController::class, 'edit'])->name('addressEdit');
         Route::post('/create', [AddressController::class, 'create'])->name('addressCreate');
         Route::post('/changePassword', [UserController::class, 'changePassword'])->name('changePassword');
@@ -79,6 +77,7 @@ Route::middleware('lang')->group(function () {
     Route::get('/lang/ar', [LangougeController::class, 'ar'])->name('lang.ar');
     Auth::routes(['verify' => true]);
     Auth::routes();
+    //history
     //socialite
     Route::get('auth/google', [SocialController::class, 'redirectToGoogle']);
     Route::get('auth/google/callback', [SocialController::class, 'handleGoogleCallback']);
