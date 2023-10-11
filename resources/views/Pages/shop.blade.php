@@ -32,7 +32,6 @@
                                 added
                                 successfully!
                             </div>
-
                         </div>
                     </div>
                 @endforeach
