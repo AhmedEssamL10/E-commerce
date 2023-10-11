@@ -18,7 +18,6 @@
                                         </button>
                                     </h5>
                                 </div>
-
                                 <div id="collapseOne" class="collapse " aria-labelledby="headingOne"
                                     data-parent="#accordionExample">
                                     <div class="card-body">
@@ -208,7 +207,6 @@
                                                 </table>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
