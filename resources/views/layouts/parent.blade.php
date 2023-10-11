@@ -38,11 +38,12 @@
 
 <body>
     <?php
+    $lang = App::getLocale();
     $categories = DB::table('catigories')
-        ->select('en_name', 'id')
+        ->select($lang . '_name AS name', 'id')
         ->get();
     $subcategories = DB::table('subcatigories')
-        ->select('en_name', 'id')
+        ->select($lang . '_name As name', 'id')
         ->get();
     ?>
     <!--PreLoader-->
@@ -79,7 +80,7 @@
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
                                             <li><a
-                                                    href="{{ route('productByCategories', $category->id) }}">{{ $category->en_name }}</a>
+                                                    href="{{ route('productByCategories', $category->id) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach
 
@@ -90,7 +91,7 @@
                                     <ul class="sub-menu">
                                         @foreach ($subcategories as $subcategory)
                                             <li><a
-                                                    href="{{ route('productBySubcategories', $subcategory->id) }}">{{ $subcategory->en_name }}</a>
+                                                    href="{{ route('productBySubcategories', $subcategory->id) }}">{{ $subcategory->name }}</a>
                                             </li>
                                         @endforeach
 
