@@ -197,7 +197,7 @@
                                                                 <td class="product-name">
                                                                     ${{ $order->quantity * $order->product->price }}
                                                                 </td>
-                                                                <td class="product-name">{{ $order->product->created_at }}
+                                                                <td class="product-name">{{ $order->created_at }}
                                                                 </td>
                                                             </tr>
                                                     @endforeach
