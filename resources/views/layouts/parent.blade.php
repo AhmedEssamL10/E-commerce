@@ -75,7 +75,7 @@
                                         href="{{ route('home') }}">{{ __('message.home') }}</a>
 
                                 </li>
-                                <li><a href="about">About</a></li>
+                                <li><a href="{{ route('about') }}">About</a></li>
                                 <li><a href="" style="pointer-events: none">{{ __('message.categories') }}</a>
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
@@ -107,7 +107,7 @@
                                         <li><a href="{{ route('shop') }}">Shop</a></li>
                                         <li><a href="{{ route('checkout') }}">Check Out</a></li>
 
-                                        <li><a href="cart">Cart</a></li>
+                                        <li><a href="{{ route('cart') }}">Cart</a></li>
                                     </ul>
                                 </li>
                                 @guest
@@ -172,7 +172,7 @@
                                 </li>
                                 <li>
                                     <div class="header-icons">
-                                        <a class="shopping-cart" href="cart"><i
+                                        <a class="shopping-cart" href="{{ route('cart') }}"><i
                                                 class="fas fa-shopping-cart"></i></a>
                                         <a class="mobile-hide search-bar-icon" href="#"><i
                                                 class="fas fa-search"></i></a>

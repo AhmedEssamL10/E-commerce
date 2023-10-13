@@ -17,18 +17,18 @@ class ProductController extends Controller
     }
     public function filterByBrands($brand_id)
     {
-        $products = Product::where('brand_id', '=', $brand_id)->get();
+        $products = Product::where('brand_id', '=', $brand_id)->paginate(5);
         return view('Pages.shop', compact('products'));
     }
     public function filterByCategories($category_id)
     {
         // DB::table('catigories')->join('subcatigories','')
-        $products = Product::where('category_id', '=', $category_id)->get();
+        $products = Product::where('category_id', '=', $category_id)->paginate(5);
         return view('Pages.shop', compact('products'));
     }
     public function filterBySubategories($subcategory_id)
     {
-        $products = Product::where('subcategory_id', '=', $subcategory_id)->get();
+        $products = Product::where('subcategory_id', '=', $subcategory_id)->paginate(5);
         return view('Pages.shop', compact('products'));
     }
     public function product_details($product_id)

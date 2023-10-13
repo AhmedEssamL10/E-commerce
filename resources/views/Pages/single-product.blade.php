@@ -21,7 +21,8 @@
                             <form action="index.html">
                                 <input type="number" name="quantity" placeholder="0">
                             </form>
-                            <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            <a href="{{ route('AddToCart', $product->id) }}" class="cart-btn"><i
+                                    class="fas fa-shopping-cart"></i> Add to Cart</a>
                         </div>
                         <h4>Share:</h4>
                         <ul class="product-share">
@@ -59,7 +60,8 @@
                             </div>
                             <h3>{{ $product1->en_name }}</h3>
                             <p class="product-price"><span>Price</span> ${{ $product1->price }} </p>
-                            <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            <a href="{{ route('AddToCart', $product1->id) }}" class="cart-btn"><i
+                                    class="fas fa-shopping-cart"></i> Add to Cart</a>
                         </div>
                     </div>
                 @endforeach
