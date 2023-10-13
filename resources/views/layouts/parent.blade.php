@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,9 +32,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <!-- responsive -->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-
 </head>
-
 <body>
     <?php
     $lang = App::getLocale();
@@ -53,7 +50,6 @@
         </div>
     </div>
     <!--PreLoader Ends-->
-
     <!-- header -->
     <div class="top-header-area" id="sticker">
         <div class="container">
@@ -67,13 +63,11 @@
                             </a>
                         </div>
                         <!-- logo -->
-
                         <!-- menu start -->
                         <nav class="main-menu">
                             <ul>
                                 <li class="current-list-item"><a
                                         href="{{ route('home') }}">{{ __('message.home') }}</a>
-
                                 </li>
                                 <li><a href="{{ route('about') }}">About</a></li>
                                 <li><a href="" style="pointer-events: none">{{ __('message.categories') }}</a>
@@ -83,7 +77,6 @@
                                                     href="{{ route('productByCategories', $category->id) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach
-
                                     </ul>
                                 </li>
                                 <li><a href=""
@@ -94,7 +87,6 @@
                                                     href="{{ route('productBySubcategories', $subcategory->id) }}">{{ $subcategory->name }}</a>
                                             </li>
                                         @endforeach
-
                                     </ul>
                                 </li>
                                 @auth
@@ -104,9 +96,7 @@
                                 <li><a href="{{ route('news.index') }}">{{ __('message.news') }}</a></li>
                                 <li><a href="{{ route('shop') }}">{{ __('message.shop') }}</a>
                                     <ul class="sub-menu">
-                                        <li><a href="{{ route('shop') }}">Shop</a></li>
                                         <li><a href="{{ route('checkout') }}">Check Out</a></li>
-
                                         <li><a href="{{ route('cart') }}">Cart</a></li>
                                     </ul>
                                 </li>
@@ -138,10 +128,7 @@
                                                     class="d-none">
                                                     @csrf
                                                 </form>
-
                                             </li>
-
-
                                         </ul>
                                     </li>
                                 @endauth
@@ -153,7 +140,6 @@
                                                     href="{{ route('login') }}">{{ __('message.login') }}</a>
                                             </li>
                                         @endif
-
                                         @if (Route::has('register'))
                                             <li class="nav-item">
                                                 <a class="nav-link"
@@ -178,13 +164,9 @@
                                                 class="fas fa-search"></i></a>
                                     </div>
                                 </li>
-
-
                             </ul>
                         </nav>
-
                         <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-
                         <div class="mobile-menu"></div>
                         <!-- menu end -->
                     </div>
@@ -286,7 +268,6 @@
         </div>
     </div>
     <!-- end footer -->
-
     <!-- copyright -->
     <div class="copyright">
         <div class="container">
@@ -312,7 +293,6 @@
         </div>
     </div>
     <!-- end copyright -->
-
     <!-- jquery -->
     {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> --}}
@@ -336,7 +316,5 @@
     <!-- main js -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
     @yield('js')
-
 </body>
-
 </html>
