@@ -10,7 +10,7 @@
     <tbody>
         @php
             $sum = 0;
-            $i = 0;
+            $i = 1;
         @endphp
         @foreach ($cartData as $order)
             <tr>
