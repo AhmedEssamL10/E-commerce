@@ -29,8 +29,8 @@
 
 <div class="btn btn-success">
     <b>
-        <strong>Total Price: {{ $sum }}</strong>
-        <strong>Shipping: 50</strong>
-        <strong>Total: {{ $sum + 50 }}</strong>
+        <div><strong>Total Price: {{ $sum }}</strong></div>
+        <div> <strong>Shipping: 50</strong></div>
+        <div><strong>Total: {{ $sum + 50 }}</strong></div>
     </b>
 </div>
