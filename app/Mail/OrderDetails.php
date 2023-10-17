@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class EmailVerificationCode extends Mailable
+class OrderDetails extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,7 +19,7 @@ class EmailVerificationCode extends Mailable
      *
      * @return void
      */
-    public function __construct(public User $user)
+    public function __construct(public array $cartData)
     {
         //
     }
@@ -32,7 +32,7 @@ class EmailVerificationCode extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Email Verification Code',
+            subject: 'Order Details',
         );
     }
 
@@ -44,8 +44,7 @@ class EmailVerificationCode extends Mailable
     public function content()
     {
         return new Content(
-            view: 'mails.emailVerificationCode',
-            
+            view: 'mails.orderDetails',
         );
     }
 
